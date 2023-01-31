@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'babbleios_Example' do
+   pod 'BabbleiOS', :path => '../'
+
+  target 'babbleios_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

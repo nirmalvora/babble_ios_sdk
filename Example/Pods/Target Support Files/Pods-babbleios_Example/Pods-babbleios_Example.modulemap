@@ -1,0 +1,6 @@
+framework module Pods_babbleios_Example {
+  umbrella header "Pods-babbleios_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

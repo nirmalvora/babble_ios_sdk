@@ -1,0 +1,16 @@
+PODS:
+  - BabbleiOS (0.0.1)
+
+DEPENDENCIES:
+  - BabbleiOS (from `../`)
+
+EXTERNAL SOURCES:
+  BabbleiOS:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  BabbleiOS: 42f793f446b94c5cfd88383566d3bd9aaff854e5
+
+PODFILE CHECKSUM: f9a4e904f7a2e1883dc49f57897140c55ffacba8
+
+COCOAPODS: 1.11.3

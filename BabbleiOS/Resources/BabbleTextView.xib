@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BabbleTextView"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="c2g-1J-lwh" customClass="OBJCBabbleTextView">
+            <rect key="frame" x="0.0" y="0.0" width="516" height="172"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1q8-uc-m0k">
+                    <rect key="frame" x="0.0" y="10" width="516" height="109"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="109" id="k22-R5-afM"/>
+                    </constraints>
+                    <color key="textColor" systemColor="labelColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <connections>
+                        <outlet property="delegate" destination="c2g-1J-lwh" id="g7L-dF-Y7w"/>
+                    </connections>
+                </textView>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MMt-7F-f83">
+                    <rect key="frame" x="0.0" y="134" width="516" height="38"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="38" id="KNe-QQ-YqI"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                    <state key="normal" title="Submit Feedback">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="onFinished:" destination="c2g-1J-lwh" eventType="touchUpInside" id="6iw-Ed-fcG"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="TEf-IM-0CJ"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="1q8-uc-m0k" firstAttribute="leading" secondItem="c2g-1J-lwh" secondAttribute="leading" id="FWV-yp-0aF"/>
+                <constraint firstItem="1q8-uc-m0k" firstAttribute="top" secondItem="c2g-1J-lwh" secondAttribute="top" constant="10" id="RS2-HK-KRE"/>
+                <constraint firstAttribute="trailing" secondItem="1q8-uc-m0k" secondAttribute="trailing" id="Xe0-Cj-x5h"/>
+                <constraint firstItem="MMt-7F-f83" firstAttribute="leading" secondItem="1q8-uc-m0k" secondAttribute="leading" id="YP4-ED-zgK"/>
+                <constraint firstAttribute="bottom" secondItem="MMt-7F-f83" secondAttribute="bottom" id="dmR-oO-l3B"/>
+                <constraint firstItem="MMt-7F-f83" firstAttribute="trailing" secondItem="1q8-uc-m0k" secondAttribute="trailing" id="mwD-RM-vSR"/>
+                <constraint firstItem="MMt-7F-f83" firstAttribute="top" secondItem="1q8-uc-m0k" secondAttribute="bottom" constant="15" id="r5B-Ml-N62"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btnFinish" destination="MMt-7F-f83" id="OLP-yJ-NoZ"/>
+                <outlet property="textView" destination="1q8-uc-m0k" id="3Ly-e1-Xwf"/>
+                <outlet property="textViewHeightConstraint" destination="k22-R5-afM" id="WgR-0F-gLN"/>
+            </connections>
+            <point key="canvasLocation" x="278.26086956521743" y="-117.85714285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
