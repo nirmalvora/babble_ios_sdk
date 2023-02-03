@@ -48,11 +48,11 @@ final class BabbleAPIController: NSObject, APIProtocol {
     }
     
     func getCohorts(_ completion: @escaping APICompletionBlock) {
-        urlRequestManager.getAPIWith("get_cohorts",header: ["babble_user_id":BabbleProjectDetailsController.shared.apiKey ,"customer_id":BabbleProjectDetailsController.shared.customerId ], completion: completion)
+        urlRequestManager.getAPIWith("get_cohorts",header: ["babble_user_id":BabbleProjectDetailsController.shared.apiKey ,"customer_id":BabbleProjectDetailsController.shared.customerId ?? "" ], completion: completion)
     }
     
     func getBackendEvents(_ completion: @escaping APICompletionBlock) {
-        urlRequestManager.getAPIWith("get_backend_events",header: ["user_id":BabbleProjectDetailsController.shared.apiKey ,"customer_id":BabbleProjectDetailsController.shared.customerId ], completion: completion)
+        urlRequestManager.getAPIWith("get_backend_events",header: ["user_id":BabbleProjectDetailsController.shared.apiKey ,"customer_id":BabbleProjectDetailsController.shared.customerId ?? ""], completion: completion)
     }
     
     func createSurveyInstance(_ request:  SurveyInstanceRequest,_ completion: @escaping APICompletionBlock) {

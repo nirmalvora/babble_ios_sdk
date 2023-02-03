@@ -10,7 +10,7 @@ import Foundation
 
 protocol BabbleSurveyResponseProtocol: AnyObject {
     func onWelcomeNextTapped()
-    func textSurveySubmit(_ text:String)
-    func numericRatingSubmit(_ text: Int)
+    func textSurveySubmit(_ text:String?)
+    func numericRatingSubmit(_ text: Int?)
     func singleAndMultiSelectionSubmit(_ selectedOptions:[String])
 }

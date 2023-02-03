@@ -181,7 +181,7 @@ class BabbleViewController: UIViewController {
             view.delegate = self
             view.currentType = .checkBox
             view.setupViewWithOptions(question.document?.fields?.answers?.arrayValue?.values ?? [], type: .checkBox, parentViewWidth: self.stackView.bounds.width)
-            view.submitButtonTitle = question.document?.fields?.ctaText?.stringValue ?? ""
+            view.submitButtonTitle = question.document?.fields?.ctaText?.stringValue ?? "Submit"
             view.isHidden = true
             self.stackView.insertArrangedSubview(view, at: indexToAddOn)
             break
@@ -190,7 +190,7 @@ class BabbleViewController: UIViewController {
             view.delegate = self
             view.currentType = .radioButton
             view.setupViewWithOptions(question.document?.fields?.answers?.arrayValue?.values ?? [], type: .radioButton, parentViewWidth: self.stackView.bounds.width)
-            view.submitButtonTitle = question.document?.fields?.ctaText?.stringValue ?? ""
+            view.submitButtonTitle = question.document?.fields?.ctaText?.stringValue ?? "Submit"
             view.isHidden = true
             self.stackView.insertArrangedSubview(view, at: indexToAddOn)
             break
@@ -199,7 +199,7 @@ class BabbleViewController: UIViewController {
             view.delegate = self
             view.placeHolderText = "Type here"
             view.minCharsAllowed = 1
-            view.submitButtonTitle = question.document?.fields?.ctaText?.stringValue ?? ""
+            view.submitButtonTitle = question.document?.fields?.ctaText?.stringValue ?? "Submit"
             view.isHidden = true
             self.stackView.insertArrangedSubview(view, at: indexToAddOn)
             break
@@ -210,7 +210,7 @@ class BabbleViewController: UIViewController {
             view.maxValue = 10
             view.ratingMinText = question.document?.fields?.minValDescription?.stringValue ?? ""
             view.ratingMaxText = question.document?.fields?.maxValDescription?.stringValue ?? ""
-            view.submitButtonTitle = question.document?.fields?.ctaText?.stringValue ?? ""
+            view.submitButtonTitle = question.document?.fields?.ctaText?.stringValue ?? "Submit"
             view.isHidden = true
             self.stackView.insertArrangedSubview(view, at: indexToAddOn)
             break
@@ -221,7 +221,7 @@ class BabbleViewController: UIViewController {
             view.maxValue = 5
             view.ratingMinText = question.document?.fields?.minValDescription?.stringValue ?? ""
             view.ratingMaxText = question.document?.fields?.maxValDescription?.stringValue ?? ""
-            view.submitButtonTitle = question.document?.fields?.ctaText?.stringValue ?? ""
+            view.submitButtonTitle = question.document?.fields?.ctaText?.stringValue ?? "Submit"
             view.isHidden = true
             self.stackView.insertArrangedSubview(view, at: indexToAddOn)
             break
@@ -229,14 +229,14 @@ class BabbleViewController: UIViewController {
             let view = BabbleWelcomeView.loadFromNib()
             view.delegate = self
             view.isHidden = true
-            view.continueTitle = question.document?.fields?.ctaText?.stringValue ?? ""
+            view.continueTitle = question.document?.fields?.ctaText?.stringValue ?? "Submit"
             self.stackView.insertArrangedSubview(view, at: indexToAddOn)
             break
         case "7":
             let view = BabbleStarsView.loadFromNib()
             view.delegate = self
             view.isHidden = true
-            view.submitButtonTitle = question.document?.fields?.ctaText?.stringValue ?? ""
+            view.submitButtonTitle = question.document?.fields?.ctaText?.stringValue ?? "Submit"
             self.stackView.insertArrangedSubview(view, at: indexToAddOn)
             break
         case "8":
@@ -244,7 +244,7 @@ class BabbleViewController: UIViewController {
             view.isForEmoji = true
             view.emojiArray = ["☹️", "🙁", "😐", "🙂", "😊"]
             view.delegate = self
-            view.submitButtonTitle = question.document?.fields?.ctaText?.stringValue ?? ""
+            view.submitButtonTitle = question.document?.fields?.ctaText?.stringValue ?? "Submit"
             view.isHidden = true
             self.stackView.insertArrangedSubview(view, at: indexToAddOn)
         case "9":
@@ -404,13 +404,17 @@ class BabbleViewController: UIViewController {
 }
 
 extension BabbleViewController: BabbleSurveyResponseProtocol {
-    func textSurveySubmit(_ text: String) {
-        self.addResponse(answer: text, questionElement: questionListResponse[currentScreenIndex])
+    func textSurveySubmit(_ text: String?) {
+        if(text != nil && !(text ?? "").isEmpty){
+            self.addResponse(answer: text!, questionElement: questionListResponse[currentScreenIndex])
+        }
         self.presentNextScreen()
     }
     
-    func numericRatingSubmit(_ text: Int) {
-        self.addResponse(answer: String(text), questionElement: questionListResponse[currentScreenIndex])
+    func numericRatingSubmit(_ text: Int?) {
+        if(text != nil){
+            self.addResponse(answer: String(text!), questionElement: questionListResponse[currentScreenIndex])
+        }
         self.presentNextScreen()
     }
     
@@ -418,7 +422,9 @@ extension BabbleViewController: BabbleSurveyResponseProtocol {
         self.presentNextScreen()
     }
     func singleAndMultiSelectionSubmit(_ selectedOptions:[String]){
-        self.addResponse(answer: selectedOptions.joined(separator: ","), questionElement: questionListResponse[currentScreenIndex])
+        if(!selectedOptions.isEmpty){
+            self.addResponse(answer: selectedOptions.joined(separator: ","), questionElement: questionListResponse[currentScreenIndex])
+        }
         self.presentNextScreen()
     }
     

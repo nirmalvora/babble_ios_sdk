@@ -76,14 +76,14 @@ class BabbleNumericView: UIView {
         self.lblMaxValue.textColor = kFooterColor
         self.lblMinValue.textColor = kFooterColor
         btnFinish.layer.cornerRadius = 5.0
-        btnFinish.isHidden = false
+        btnFinish.isHidden = true
         btnFinish.backgroundColor = kSubmitButtonColorDisable
         btnFinish.isUserInteractionEnabled = false
     }
     
     var selectedButton: UIButton? {
         didSet {
-            
+            self.delegate?.numericRatingSubmit(selectedButton?.tag ?? 0)
         }
     }
 
@@ -102,7 +102,7 @@ class BabbleNumericView: UIView {
     }
     
     @IBAction func onContinueTapped(_ sender: Any) {
-        self.delegate?.numericRatingSubmit(selectedButton?.tag ?? 0)
+        self.delegate?.numericRatingSubmit(selectedButton?.tag)
     }
 }
 

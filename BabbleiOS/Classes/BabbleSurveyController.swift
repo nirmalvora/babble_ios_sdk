@@ -129,7 +129,7 @@ class BabbleSurveyController: NSObject {
             }
         })
         
-        let eligibleSurveyRequest = EligibleSurveyRequest(babbleUserId: self.projectDetailsController.apiKey!, customerId: self.projectDetailsController.customerId!)
+        let eligibleSurveyRequest = EligibleSurveyRequest(babbleUserId: self.projectDetailsController.apiKey!, customerId: self.projectDetailsController.customerId ?? "")
         apiController.getEligibleSurveyIds(eligibleSurveyRequest,{ isSuccess, error, data in
             if isSuccess == true, let data = data {
                 do {
@@ -225,7 +225,7 @@ class BabbleSurveyController: NSObject {
     func createSurveyInstance(surveyId: String, eventIds: [BackendEventResponseElement]?, surveyInstanceId: String){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
-        let surveyInstanceRequest = SurveyInstanceRequest(surveyID: surveyId, userID: self.projectDetailsController.apiKey!, customerID: self.projectDetailsController.customerId!, surveyInstanceID: surveyInstanceId, timeVal: dateFormatter.string(from: Date()), backendEventIDS: eventIds?.map({(($0.document?.name ?? "") as NSString).lastPathComponent}) ?? [])
+        let surveyInstanceRequest = SurveyInstanceRequest(surveyID: surveyId, userID: self.projectDetailsController.apiKey!, customerID: self.projectDetailsController.customerId ?? "", surveyInstanceID: surveyInstanceId, timeVal: dateFormatter.string(from: Date()), backendEventIDS: eventIds?.map({(($0.document?.name ?? "") as NSString).lastPathComponent}) ?? [])
         apiController.createSurveyInstance(surveyInstanceRequest, { isSuccess, error, data in
             if isSuccess == true, let data = data {
                 if let string = String(data: data, encoding: .utf8) {

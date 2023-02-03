@@ -16,62 +16,78 @@ import UIKit
 
 @objc(OBJCBabbleSingleAndMultiSelectView)
 class BabbleSingleAndMultiSelectView: UIView {
-
+    
     @IBOutlet weak var stackView1: UIStackView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-
+    
     weak var delegate: BabbleSurveyResponseProtocol?
     @IBOutlet weak var btnFinish: UIButton!
     var currentType:  BabbleRadioButton.BabbleRadioButtonType = BabbleRadioButton.BabbleRadioButtonType.radioButton
     var allOptions: [Codable]?
-
+    
     let textFieldViewTag = 1001
     let enterButtonTag = 1002
-
+    
     var otherOptionTF: UITextField!
     var otherOptionAnswer = ""
     var parentWidth: CGFloat = 0.0
-
+    
     var selectedButton: UIButton? {
         didSet {
+            if self.currentType == .radioButton, self.selectedButton != nil {
+                var selectedOptionIDs = [String]()
+                for view in self.stackView1.arrangedSubviews {
+                    if let btn = view as? UIButton {
+                        if btn.isSelected == true {
+                            selectedOptionIDs.append(btn.currentTitle!)
+                        }
+                    }
+                }
+                self.delegate?.singleAndMultiSelectionSubmit(selectedOptionIDs)
+            }
         }
     }
-
+    
     var submitButtonTitle : String = "Submit" {
         didSet {
             btnFinish.setTitle(self.submitButtonTitle, for: .normal)
         }
     }
-   
+    
     func setupViewWithOptions(_ options: [StringValue], type: BabbleRadioButton.BabbleRadioButtonType, parentViewWidth: CGFloat) {
         self.currentType = type
         self.allOptions = options
         parentWidth = parentViewWidth
-        btnFinish.layer.cornerRadius = 5.0
-        btnFinish.isHidden = false
-        btnFinish.backgroundColor = kSubmitButtonColorDisable
-        btnFinish.isUserInteractionEnabled = false
-        bottomConstraint.constant = 53.0
+        if type == .checkBox {
+            btnFinish.layer.cornerRadius = 5.0
+            btnFinish.isHidden = false
+            btnFinish.backgroundColor = kBrandColor
+            btnFinish.isUserInteractionEnabled = true
+            bottomConstraint.constant = 70.0
+        } else {
+            btnFinish.isHidden = true
+            bottomConstraint.constant = 0.0
+        }
         
         while let first = stackView1.arrangedSubviews.first {
             stackView1.removeArrangedSubview(first)
-                first.removeFromSuperview()
+            first.removeFromSuperview()
         }
         
         for i in 0..<options.count {
             let option = options[i]
-                let button = BabbleRadioButton(frame: CGRect(x: 0, y: 0, width: parentViewWidth, height: 43), type: type)
-                button.titleLabel?.lineBreakMode = .byWordWrapping
-                button.setTitle(option.stringValue  ?? "", for: .normal)
-                button.tag = i
-                button.addTarget(self, action: #selector(onSelectButton(_:)), for: .touchUpInside)
-                self.stackView1.addArrangedSubview(button)
-                let height = self.labelSize(for: option.stringValue ?? "", maxWidth: (parentViewWidth))
-                button.translatesAutoresizingMaskIntoConstraints = false
-                button.heightAnchor.constraint(equalToConstant: height + 24).isActive = true
+            let button = BabbleRadioButton(frame: CGRect(x: 0, y: 0, width: parentViewWidth, height: 43), type: type)
+            button.titleLabel?.lineBreakMode = .byWordWrapping
+            button.setTitle(option.stringValue  ?? "", for: .normal)
+            button.tag = i
+            button.addTarget(self, action: #selector(onSelectButton(_:)), for: .touchUpInside)
+            self.stackView1.addArrangedSubview(button)
+            let height = self.labelSize(for: option.stringValue ?? "", maxWidth: (parentViewWidth))
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.heightAnchor.constraint(equalToConstant: height + 24).isActive = true
         }
     }
-
+    
     func setHeightForButton(_ button : UIButton ) {
         if var buttonTitle = button.title(for: .normal) {
             if buttonTitle.isEmpty {
@@ -79,11 +95,11 @@ class BabbleSingleAndMultiSelectView: UIView {
             }
             let newHeight = self.labelSize(for: buttonTitle, maxWidth: (parentWidth - 54))
             button.constraints.forEach { (constraint) in
-                 if constraint.firstAttribute == .height
-                 {
-                     constraint.constant = newHeight + 24
-                 }
-             }
+                if constraint.firstAttribute == .height
+                {
+                    constraint.constant = newHeight + 24
+                }
+            }
         }
     }
     
@@ -127,7 +143,7 @@ class BabbleSingleAndMultiSelectView: UIView {
         self.delegate?.singleAndMultiSelectionSubmit(selectedOptionIDs)
     }
     
-
+    
     @IBAction func onSelectButton(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         if self.currentType == .radioButton {
@@ -138,7 +154,7 @@ class BabbleSingleAndMultiSelectView: UIView {
                 self.selectedButton = nil
             }
         }
-        self.setupFinishButton()
+//        self.setupFinishButton()
     }
 }
 

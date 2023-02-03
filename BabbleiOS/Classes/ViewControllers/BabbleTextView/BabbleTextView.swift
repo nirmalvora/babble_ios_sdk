@@ -16,12 +16,12 @@ class BabbleTextView: UIView {
     @IBOutlet weak var textViewHeightConstraint: NSLayoutConstraint!
     var minCharsAllowed = 5 {
         didSet {
-            if minCharsAllowed == 0 {
-                self.btnFinish.alpha = 1.0
-                self.btnFinish.isHidden = false
-                btnFinish.backgroundColor = kBrandColor
-                btnFinish.isUserInteractionEnabled = true
-            }
+//            if minCharsAllowed == 0 {
+//                self.btnFinish.alpha = 1.0
+//                self.btnFinish.isHidden = false
+//                btnFinish.backgroundColor = kBrandColor
+//                btnFinish.isUserInteractionEnabled = true
+//            }
         }
     }
     var placeHolderText = "Write here..." {
@@ -33,15 +33,15 @@ class BabbleTextView: UIView {
     var placeholderLabel : UILabel!
     var enteredText: String? {
         didSet {
-            if enteredText?.count ?? 0 >= minCharsAllowed {
-                btnFinish.backgroundColor = kBrandColor
-                btnFinish.isUserInteractionEnabled = true
-
-            } else {
-                btnFinish.backgroundColor = kSubmitButtonColorDisable
-                btnFinish.isUserInteractionEnabled = false
-
-            }
+//            if enteredText?.count ?? 0 >= minCharsAllowed {
+//                btnFinish.backgroundColor = kBrandColor
+//                btnFinish.isUserInteractionEnabled = true
+//
+//            } else {
+//                btnFinish.backgroundColor = kSubmitButtonColorDisable
+//                btnFinish.isUserInteractionEnabled = false
+//
+//            }
         }
     }
     var submitButtonTitle : String = "Submit Feedback" {
@@ -69,8 +69,10 @@ class BabbleTextView: UIView {
         placeholderLabel.isHidden = !textView.text.isEmpty
         btnFinish.layer.cornerRadius = 5.0
         btnFinish.isHidden = false
-        btnFinish.backgroundColor = kSubmitButtonColorDisable
-        btnFinish.isUserInteractionEnabled = false
+        btnFinish.backgroundColor = kBrandColor
+        btnFinish.isUserInteractionEnabled = true
+//        btnFinish.backgroundColor = kSubmitButtonColorDisable
+//        btnFinish.isUserInteractionEnabled = false
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
 
@@ -78,10 +80,14 @@ class BabbleTextView: UIView {
     }
     
     @IBAction func onFinished(_ sender: UIButton) {
-        if let text = textView.text, text.count >= minCharsAllowed {
+        if let text = textView.text{
             self.isUserInteractionEnabled = false
             self.delegate?.textSurveySubmit(text)
         }
+//        if let text = textView.text, text.count >= minCharsAllowed {
+//            self.isUserInteractionEnabled = false
+//            self.delegate?.textSurveySubmit(text)
+//        }
     }
     
     @objc func keyboardWasShown(notification: NSNotification) {
@@ -119,8 +125,6 @@ extension BabbleTextView: UITextViewDelegate {
             if (frame.size.height < availableHeight) || (newHeight < textView.bounds.height) {
                 self.textViewHeightConstraint.constant = newHeight
             }
-        }
-       
-       
+        }       
     }
 }

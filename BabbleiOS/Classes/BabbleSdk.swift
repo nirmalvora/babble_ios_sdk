@@ -25,13 +25,9 @@ public final class BabbleSdk: NSObject {
     
 
 
-    @objc public class func setCustomerId(_ customerId: String) {
-        if(customerId.isEmpty){
-            BabbleLog.writeLog("Provide customer id")
-        }else{
-            shared.projectDetailsController.customerId = customerId
-            shared.babbleSurveyController.getCustomerData()
-        }
+    @objc public class func setCustomerId(_ customerId: String?) {
+        shared.projectDetailsController.customerId = customerId
+        shared.babbleSurveyController.getCustomerData()
         
     }
     

@@ -24,6 +24,7 @@ class BabbleStarsView: UIView {
     
     var selectedButton: UIButton? {
         didSet {
+            self.delegate?.numericRatingSubmit(selectedButton?.tag ?? 0)
         }
     }
     var submitButtonTitle : String = "Submit" {
@@ -58,7 +59,7 @@ class BabbleStarsView: UIView {
         self.stackView1.addGestureRecognizer(gesture)
         self.setupImages()
         btnFinish.layer.cornerRadius = 5.0
-        btnFinish.isHidden = false
+        btnFinish.isHidden = true
         self.lblMaxValue.textColor = kFooterColor
         self.lblMinValue.textColor = kFooterColor
         btnFinish.backgroundColor = kSubmitButtonColorDisable

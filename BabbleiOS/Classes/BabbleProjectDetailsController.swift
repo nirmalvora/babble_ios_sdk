@@ -18,7 +18,7 @@ import UIKit
 
 protocol ProjectDetailsManageable {
     var apiKey: String! { get set }
-    var customerId: String! { get set }
+    var customerId: String? { get set }
     var surveyResponseList: [SurveyResponseElement]? {get set}
     var triggerListResponse: [TriggerListResponseElement]? {get set}
     var questionListResponse: [QuestionListResponseElement]? {get set}
@@ -44,7 +44,7 @@ final class BabbleProjectDetailsController: NSObject, ProjectDetailsManageable {
             }
         }
     }
-    var customerId: String! {
+    var customerId: String? {
         get {
             return UserDefaults.standard.value(forKey: "customerId") as? String
         }
