@@ -27,6 +27,7 @@ struct QuestionFields: Codable {
     let userID: StringValue?
     let questionTypeID: IntegerValue?
     let inactive: BooleanValue?
+    let nextQuestion: NextQuestion?
 
     enum CodingKeys: String, CodingKey {
         case questionText = "question_text"
@@ -41,8 +42,22 @@ struct QuestionFields: Codable {
         case sequenceNo = "sequence_no"
         case userID = "user_id"
         case questionTypeID = "question_type_id"
+        case nextQuestion = "next_question"
         case inactive
     }
+}
+
+struct NextQuestion: Codable {
+    let mapValue: MapValue?
+}
+
+struct MapValue: Codable {
+    let fields: [String: NextQueField]?
+}
+
+// MARK: - Field
+struct NextQueField: Codable {
+    let stringValue: String?
 }
 
 struct Answers: Codable {

@@ -92,24 +92,10 @@ class BabbleViewController: UIViewController {
         }
         
         if self.currentScreenIndex == -1 {
-            self.presentNextScreen()
+            self.presentNextScreen(responseAnswer: nil)
         }
         let radius: CGFloat = 5.0
         self.bottomView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: radius)
-    }
-    
-    fileprivate func presentNextScreen() {
-        if(currentScreenIndex<(questionListResponse.count-1))
-        {
-            currentScreenIndex = currentScreenIndex+1
-            self.setupUIAccordingToConfiguration()
-            self.progressBar.setProgress(Float(CGFloat(self.currentScreenIndex + 1 )/CGFloat(questionListResponse.count)), animated: true)
-        } else {
-            guard let completion = self.completionBlock else { return }
-            self.runCloseAnimation {
-                completion()
-            }
-        }
     }
     
     fileprivate func getNextQuestionIndex(_ previousAnswer : String?) -> Int? {
@@ -408,24 +394,24 @@ extension BabbleViewController: BabbleSurveyResponseProtocol {
         if(text != nil && !(text ?? "").isEmpty){
             self.addResponse(answer: text!, questionElement: questionListResponse[currentScreenIndex])
         }
-        self.presentNextScreen()
+        self.presentNextScreen(responseAnswer: nil)
     }
     
     func numericRatingSubmit(_ text: Int?) {
         if(text != nil){
             self.addResponse(answer: String(text!), questionElement: questionListResponse[currentScreenIndex])
         }
-        self.presentNextScreen()
+        self.presentNextScreen(responseAnswer: String(text!))
     }
     
     func onWelcomeNextTapped() {
-        self.presentNextScreen()
+        self.presentNextScreen(responseAnswer: nil)
     }
     func singleAndMultiSelectionSubmit(_ selectedOptions:[String]){
         if(!selectedOptions.isEmpty){
             self.addResponse(answer: selectedOptions.joined(separator: ","), questionElement: questionListResponse[currentScreenIndex])
         }
-        self.presentNextScreen()
+        self.presentNextScreen(responseAnswer: selectedOptions.joined(separator: ","))
     }
     
     func addResponse(answer: String,questionElement: QuestionListResponseElement){
@@ -449,4 +435,30 @@ extension BabbleViewController: BabbleSurveyResponseProtocol {
             }
         })
     }
+    
+    fileprivate func presentNextScreen(responseAnswer: String?) {
+        if(currentScreenIndex<(questionListResponse.count-1))
+        {
+     
+            if (currentScreenIndex != -1 && responseAnswer != nil && questionListResponse[currentScreenIndex].document?.fields?.nextQuestion != nil && questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[responseAnswer!] != nil){
+                for i in 0...(questionListResponse.count-1) {
+                    if( ((questionListResponse[i].document?.name ?? "") as NSString).lastPathComponent == (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[responseAnswer!]?.stringValue ?? ""))
+                    {
+                        currentScreenIndex = i
+                        break
+                    }
+                }
+            }else{
+                currentScreenIndex = currentScreenIndex+1
+            }
+            self.setupUIAccordingToConfiguration()
+            self.progressBar.setProgress(Float(CGFloat(self.currentScreenIndex + 1 )/CGFloat(questionListResponse.count)), animated: true)
+        } else {
+            guard let completion = self.completionBlock else { return }
+            self.runCloseAnimation {
+                completion()
+            }
+        }
+    }
+    
 }
