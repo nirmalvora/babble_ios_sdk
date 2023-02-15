@@ -441,11 +441,13 @@ extension BabbleViewController: BabbleSurveyResponseProtocol {
         {
      
             if (currentScreenIndex != -1 && responseAnswer != nil && questionListResponse[currentScreenIndex].document?.fields?.nextQuestion != nil && questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[responseAnswer!] != nil){
-                for i in 0...(questionListResponse.count-1) {
+                for i in currentScreenIndex...(questionListResponse.count-1) {
                     if( ((questionListResponse[i].document?.name ?? "") as NSString).lastPathComponent == (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[responseAnswer!]?.stringValue ?? ""))
                     {
                         currentScreenIndex = i
                         break
+                    }else if(i == (questionListResponse.count-1)){
+                        currentScreenIndex = currentScreenIndex+1
                     }
                 }
             }else{

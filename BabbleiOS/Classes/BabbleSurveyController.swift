@@ -173,8 +173,10 @@ class BabbleSurveyController: NSObject {
                             
                             if(date != nil && survey.document?.fields?.relevancePeriod?.stringValue != nil && !(survey.document?.fields?.relevancePeriod?.stringValue ?? "").isEmpty )
                             {
-                                let modifiedDate = Calendar.current.date(byAdding: .day, value: Int(survey.document?.fields?.relevancePeriod?.stringValue ?? "0")!, to: date!)!
-                                dateCheck = modifiedDate < currentDate
+                              
+                                let modifiedDate = Calendar.current.date(byAdding: .hour, value: Int(survey.document?.fields?.relevancePeriod?.stringValue ?? "0")!, to: date!)!
+                                
+                                dateCheck = modifiedDate > currentDate
                             }
                             if (survey.document?.fields?.relevancePeriod?.stringValue == nil || (survey.document?.fields?.relevancePeriod?.stringValue ?? "").isEmpty) {
                                 dateCheck = true
@@ -182,8 +184,7 @@ class BabbleSurveyController: NSObject {
                             return ($0.document?.fields?.eventName?.stringValue ?? "") == eventName && dateCheck
                         })
                         
-                        let cohortIds = self.projectDetailsController.cohortResonse?.map({$0.document?.name ?? ""}) ?? []
-                        
+                        let cohortIds = self.projectDetailsController.cohortResonse?.map({(($0.document?.name ?? "") as NSString).lastPathComponent}) ?? []
                         let cohortCheck = (cohortId == nil || cohortId!.isEmpty || cohortIds.contains(
                                         cohortId!
                         ) == true)
