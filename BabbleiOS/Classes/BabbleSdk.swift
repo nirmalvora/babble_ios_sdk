@@ -25,17 +25,17 @@ public final class BabbleSdk: NSObject {
     
 
 
-    @objc public class func setCustomerId(_ customerId: String?) {
+    @objc public class func setCustomerId(_ customerId: String?,userDetails: [String: Any]? = nil) {
         shared.projectDetailsController.customerId = customerId
-        shared.babbleSurveyController.getCustomerData()
+        shared.babbleSurveyController.getCustomerData(userDetails: userDetails)
         
     }
     
-    @objc public class func trigger(_ trigger: String) {
+    @objc public class func trigger(_ trigger: String,properties: [String: Any]? = nil) {
         if(trigger.isEmpty){
             BabbleLog.writeLog("Provide trigger")
         }else{
-            shared.babbleSurveyController.triggerSurvey(trigger)
+            shared.babbleSurveyController.triggerSurvey(triggerName:trigger, properties: properties)
         }
     }
 }

@@ -1,6 +1,6 @@
 {
   "name": "BabbleiOS",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "summary": "Survey for the app",
   "description": "Survey for app with different types of UI elements.",
   "homepage": "https://github.com/nirmalvora/babble_ios_sdk",
@@ -11,7 +11,7 @@
   "authors": "Nirmal Vora.",
   "source": {
     "git": "https://github.com/nirmalvora/babble_ios_sdk.git",
-    "tag": "0.0.1"
+    "tag": "0.0.4"
   },
   "platforms": {
     "ios": "10.0"

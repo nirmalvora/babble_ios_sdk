@@ -23,7 +23,8 @@ protocol APIProtocol {
     func getStyle(_ completion: @escaping APICompletionBlock)
     func getCohorts(_ completion: @escaping APICompletionBlock)
     func getBackendEvents(_ completion: @escaping APICompletionBlock)
-    func createSurveyInstance(_ request:  SurveyInstanceRequest,_ completion: @escaping APICompletionBlock)
+    func createSurveyInstance(_ request:  [String: Any],_ completion: @escaping APICompletionBlock)
+    func setCustomerProperties(_ request:  [String: Any],_ completion: @escaping APICompletionBlock)
     func addResponse(_ request:  AddResponseRequest,_ completion: @escaping APICompletionBlock)
     func getEligibleSurveyIds(_ request:  EligibleSurveyRequest,_ completion: @escaping APICompletionBlock)
 }
@@ -55,10 +56,19 @@ final class BabbleAPIController: NSObject, APIProtocol {
         urlRequestManager.getAPIWith("get_backend_events",header: ["user_id":BabbleProjectDetailsController.shared.apiKey ,"customer_id":BabbleProjectDetailsController.shared.customerId ?? ""], completion: completion)
     }
     
-    func createSurveyInstance(_ request:  SurveyInstanceRequest,_ completion: @escaping APICompletionBlock) {
+    func createSurveyInstance(_ request: [String: Any],_ completion: @escaping APICompletionBlock) {
         do {
-            let jsonData = try JSONEncoder().encode(request)
+            let jsonData = try JSONSerialization.data(withJSONObject: request, options: .prettyPrinted)
             urlRequestManager.postAPIWith("create_survey_instance",parameters: jsonData,header: [:], completion: completion)
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+    }
+    
+    func setCustomerProperties(_ request: [String: Any],_ completion: @escaping APICompletionBlock) {
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: request, options: .prettyPrinted)
+            urlRequestManager.postAPIWith("set_customer_properties",parameters: jsonData,header: [:], completion: completion)
         } catch {
             fatalError(error.localizedDescription)
         }

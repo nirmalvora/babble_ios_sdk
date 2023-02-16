@@ -101,7 +101,7 @@ class BabbleSurveyController: NSObject {
     
     
     
-    func getCustomerData(){
+    func getCustomerData(userDetails: [String: Any]? = nil){
         apiController.getCohorts({ isSuccess, error, data in
             if isSuccess == true, let data = data {
                 do {
@@ -142,10 +142,27 @@ class BabbleSurveyController: NSObject {
                 print("getEligibleSurveyIds Failed")
             }
         })
+        
+        if(!((userDetails ?? [:]).isEmpty))
+        {
+            var customerPropertiesRequest = [String: Any]()
+            customerPropertiesRequest["properties"] = userDetails
+            customerPropertiesRequest["user_id"] = self.projectDetailsController.apiKey!
+            customerPropertiesRequest["customer_id"] = self.projectDetailsController.customerId ?? ""
+            apiController.setCustomerProperties(customerPropertiesRequest, { isSuccess, error, data in
+                if isSuccess == true, let data = data {
+                    if let string = String(data: data, encoding: .utf8) {
+                        print(string)
+                    }
+                } else {
+                    print("setCustomerProperties failed")
+                }
+            })
+        }
     }
     
     
-    func triggerSurvey(_ triggerName: String){
+    func triggerSurvey(triggerName: String,properties: [String: Any]? = nil){
         if(isInitialized){
             if let trigger = self.projectDetailsController.triggerListResponse?.first(where: {($0.document?.fields?.name?.stringValue ?? "") == triggerName})
             {
@@ -173,7 +190,7 @@ class BabbleSurveyController: NSObject {
                             
                             if(date != nil && survey.document?.fields?.relevancePeriod?.stringValue != nil && !(survey.document?.fields?.relevancePeriod?.stringValue ?? "").isEmpty )
                             {
-                              
+                                
                                 let modifiedDate = Calendar.current.date(byAdding: .hour, value: Int(survey.document?.fields?.relevancePeriod?.stringValue ?? "0")!, to: date!)!
                                 
                                 dateCheck = modifiedDate > currentDate
@@ -186,14 +203,14 @@ class BabbleSurveyController: NSObject {
                         
                         let cohortIds = self.projectDetailsController.cohortResonse?.map({(($0.document?.name ?? "") as NSString).lastPathComponent}) ?? []
                         let cohortCheck = (cohortId == nil || cohortId!.isEmpty || cohortIds.contains(
-                                        cohortId!
+                            cohortId!
                         ) == true)
                         
                         let eventCheck = eventName == nil || eventName!.isEmpty || !(eventList ?? []).isEmpty
                         
                         let showSurvey =
-                                        questionList != nil && !questionList!.isEmpty && cohortCheck && eventCheck
-                    
+                        questionList != nil && !questionList!.isEmpty && cohortCheck && eventCheck
+                        
                         if(showSurvey){
                             let sortedQuestionList = questionList?.sorted(by: {
                                 let value1 = Int($0.document?.fields?.sequenceNo?.integerValue ?? "0")!
@@ -202,7 +219,7 @@ class BabbleSurveyController: NSObject {
                                 
                             })
                             let surveyInstanceId = self.randomString(length: 10)
-                            self.createSurveyInstance(surveyId: surveyId, eventIds: eventList, surveyInstanceId: surveyInstanceId)
+                            self.createSurveyInstance(surveyId: surveyId, eventIds: eventList, surveyInstanceId: surveyInstanceId,properties: properties)
                             self.openSurvey(sortedQuestionList!, surveyInstanceId)
                         }else{
                             if(!cohortCheck){
@@ -223,10 +240,18 @@ class BabbleSurveyController: NSObject {
         }
     }
     
-    func createSurveyInstance(surveyId: String, eventIds: [BackendEventResponseElement]?, surveyInstanceId: String){
+    func createSurveyInstance(surveyId: String, eventIds: [BackendEventResponseElement]?, surveyInstanceId: String,properties: [String: Any]? = nil){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
-        let surveyInstanceRequest = SurveyInstanceRequest(surveyID: surveyId, userID: self.projectDetailsController.apiKey!, customerID: self.projectDetailsController.customerId ?? "", surveyInstanceID: surveyInstanceId, timeVal: dateFormatter.string(from: Date()), backendEventIDS: eventIds?.map({(($0.document?.name ?? "") as NSString).lastPathComponent}) ?? [])
+        var surveyInstanceRequest = [String: Any]()
+        surveyInstanceRequest["properties"] = properties
+        surveyInstanceRequest["survey_id"] = surveyId
+        surveyInstanceRequest["user_id"] = self.projectDetailsController.apiKey!
+        surveyInstanceRequest["time_val"] = dateFormatter.string(from: Date())
+        surveyInstanceRequest["customer_id"] = self.projectDetailsController.customerId ?? ""
+        surveyInstanceRequest["survey_instance_id"] = surveyInstanceId
+        surveyInstanceRequest["device platform"] = "iOS"
+        surveyInstanceRequest["backend_event_ids"] = eventIds?.map({(($0.document?.name ?? "") as NSString).lastPathComponent}) ?? []
         apiController.createSurveyInstance(surveyInstanceRequest, { isSuccess, error, data in
             if isSuccess == true, let data = data {
                 if let string = String(data: data, encoding: .utf8) {
