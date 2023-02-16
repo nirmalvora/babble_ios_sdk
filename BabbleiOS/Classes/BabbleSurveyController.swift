@@ -250,7 +250,7 @@ class BabbleSurveyController: NSObject {
         surveyInstanceRequest["time_val"] = dateFormatter.string(from: Date())
         surveyInstanceRequest["customer_id"] = self.projectDetailsController.customerId ?? ""
         surveyInstanceRequest["survey_instance_id"] = surveyInstanceId
-        surveyInstanceRequest["device platform"] = "iOS"
+        surveyInstanceRequest["device_platform"] = "iOS"
         surveyInstanceRequest["backend_event_ids"] = eventIds?.map({(($0.document?.name ?? "") as NSString).lastPathComponent}) ?? []
         apiController.createSurveyInstance(surveyInstanceRequest, { isSuccess, error, data in
             if isSuccess == true, let data = data {
