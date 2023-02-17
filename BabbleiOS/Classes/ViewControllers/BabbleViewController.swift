@@ -439,22 +439,32 @@ extension BabbleViewController: BabbleSurveyResponseProtocol {
     fileprivate func presentNextScreen(responseAnswer: String?) {
         if(currentScreenIndex<(questionListResponse.count-1))
         {
-     
+            
             if (currentScreenIndex != -1 && responseAnswer != nil && questionListResponse[currentScreenIndex].document?.fields?.nextQuestion != nil && questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[responseAnswer!] != nil){
-                for i in currentScreenIndex...(questionListResponse.count-1) {
-                    if( ((questionListResponse[i].document?.name ?? "") as NSString).lastPathComponent == (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[responseAnswer!]?.stringValue ?? ""))
-                    {
-                        currentScreenIndex = i
-                        break
-                    }else if(i == (questionListResponse.count-1)){
-                        currentScreenIndex = currentScreenIndex+1
+                if((questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[responseAnswer!]?.stringValue ?? "").lowercased() == "end"){
+                    guard let completion = self.completionBlock else { return }
+                    self.runCloseAnimation {
+                        completion()
                     }
+                }else{
+                    for i in currentScreenIndex...(questionListResponse.count-1) {
+                        if( ((questionListResponse[i].document?.name ?? "") as NSString).lastPathComponent == (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[responseAnswer!]?.stringValue ?? ""))
+                        {
+                            currentScreenIndex = i
+                            break
+                        }else if(i == (questionListResponse.count-1)){
+                            currentScreenIndex = currentScreenIndex+1
+                        }
+                    }
+                    self.setupUIAccordingToConfiguration()
+                    self.progressBar.setProgress(Float(CGFloat(self.currentScreenIndex + 1 )/CGFloat(questionListResponse.count)), animated: true)
                 }
             }else{
                 currentScreenIndex = currentScreenIndex+1
+                self.setupUIAccordingToConfiguration()
+                self.progressBar.setProgress(Float(CGFloat(self.currentScreenIndex + 1 )/CGFloat(questionListResponse.count)), animated: true)
             }
-            self.setupUIAccordingToConfiguration()
-            self.progressBar.setProgress(Float(CGFloat(self.currentScreenIndex + 1 )/CGFloat(questionListResponse.count)), animated: true)
+            
         } else {
             guard let completion = self.completionBlock else { return }
             self.runCloseAnimation {
