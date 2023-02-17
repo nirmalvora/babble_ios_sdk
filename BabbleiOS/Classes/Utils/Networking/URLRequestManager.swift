@@ -13,7 +13,7 @@ protocol URLRequestManagerProtocol {
 }
 
 class URLRequestManager: URLRequestManagerProtocol {
-    let BaseURL: String = "https://pri9rvopx2.execute-api.ap-south-1.amazonaws.com/prod-2/"
+    let BaseURL: String = "https://babble-app-backend.herokuapp.com/"
     func getAPIWith(_ endPoint: String, header: [String: String], completion: @escaping APICompletionBlock) {
         var request = URLRequest(url: URL(string: "\(BaseURL)\(endPoint)")!)
         request.httpMethod = "GET"
