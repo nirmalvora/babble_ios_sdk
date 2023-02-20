@@ -461,6 +461,9 @@ extension BabbleViewController: BabbleSurveyResponseProtocol {
                 }
             }else{
                 currentScreenIndex = currentScreenIndex+1
+                if(answer != nil && !(answer ?? "").isEmpty){
+                    self.addResponse(answer: answer!, questionElement: questionElement!)
+                }
                 self.setupUIAccordingToConfiguration()
                 self.progressBar.setProgress(Float(CGFloat(self.currentScreenIndex + 1 )/CGFloat(questionListResponse.count)), animated: true)
             }
