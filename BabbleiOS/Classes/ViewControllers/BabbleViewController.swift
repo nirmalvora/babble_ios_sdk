@@ -433,7 +433,7 @@ extension BabbleViewController: BabbleSurveyResponseProtocol {
         {
             
             if (currentScreenIndex != -1 && checkForNextQuestion != nil && questionListResponse[currentScreenIndex].document?.fields?.nextQuestion != nil && (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!] != nil || questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?["any"] != nil)){
-                if((questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!]?.stringValue ?? "").lowercased() == "end"){
+                if((questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!]?.stringValue ?? "").lowercased() == "end" || (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?["any"]?.stringValue ?? "").lowercased() == "end"){
                     guard let completion = self.completionBlock else { return }
                     self.runCloseAnimation {
                         completion()
