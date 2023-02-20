@@ -92,7 +92,7 @@ class BabbleViewController: UIViewController {
         }
         
         if self.currentScreenIndex == -1 {
-            self.presentNextScreen(responseAnswer: nil)
+            self.presentNextScreen(checkForNextQuestion: nil,answer: nil,questionElement: nil)
         }
         let radius: CGFloat = 5.0
         self.bottomView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: radius)
@@ -391,40 +391,32 @@ class BabbleViewController: UIViewController {
 
 extension BabbleViewController: BabbleSurveyResponseProtocol {
     func textSurveySubmit(_ text: String?) {
-        if(text != nil && !(text ?? "").isEmpty){
-            self.addResponse(answer: text!, questionElement: questionListResponse[currentScreenIndex])
-        }
-        self.presentNextScreen(responseAnswer: nil)
+        self.presentNextScreen(checkForNextQuestion: nil, answer: text, questionElement: questionListResponse[currentScreenIndex])
     }
     
     func numericRatingSubmit(_ text: Int?) {
-        if(text != nil){
-            self.addResponse(answer: String(text!), questionElement: questionListResponse[currentScreenIndex])
-        }
-        self.presentNextScreen(responseAnswer: String(text!))
+        self.presentNextScreen(checkForNextQuestion: String(text!),answer:  String(text!), questionElement: questionListResponse[currentScreenIndex])
     }
     
     func onWelcomeNextTapped() {
-        self.presentNextScreen(responseAnswer: nil)
+        self.presentNextScreen(checkForNextQuestion: nil,answer: nil, questionElement: nil)
     }
     func singleAndMultiSelectionSubmit(_ selectedOptions:[String]){
-        if(!selectedOptions.isEmpty){
-            self.addResponse(answer: selectedOptions.joined(separator: ","), questionElement: questionListResponse[currentScreenIndex])
-        }
-        self.presentNextScreen(responseAnswer: selectedOptions.joined(separator: ","))
+        self.presentNextScreen(checkForNextQuestion: selectedOptions.isEmpty ? "" : selectedOptions[0],answer: selectedOptions.joined(separator: ","), questionElement: questionListResponse[currentScreenIndex])
     }
     
     func addResponse(answer: String,questionElement: QuestionListResponseElement){
         let tempQuestionList =
         questionListResponse.filter { $0.document?.fields?.questionTypeID?.integerValue != "6" &&  $0.document?.fields?.questionTypeID?.integerValue != "9" }
         let surveyId = questionElement.document?.fields?.surveyID?.stringValue ?? ""
+        let nextQuestionTracker = ( questionListResponse[currentScreenIndex].document?.fields?.questionTypeID?.integerValue ?? "") != "9"
         let questionTypeId = questionElement.document?.fields?.questionTypeID?.integerValue ?? "-1"
         let sequenceNo = questionElement.document?.fields?.sequenceNo?.integerValue ?? "-1"
         let questionText = questionElement.document?.fields?.questionText?.stringValue ?? ""
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
         let date = dateFormatter.string(from: Date())
-        let addRequest = AddResponseRequest(surveyId: surveyId, surveyInstanceId: surveyInstanceId, questionText: questionText, responseCreateAt: date, responseUpdateAt: date, response: answer, questionTypeId: Int(questionTypeId), sequenceNo: Int(sequenceNo), shouldMarkComplete: tempQuestionList.last?.document?.name == questionElement.document?.name, shouldMarkPartial: tempQuestionList.last?.document?.name != questionElement.document?.name)
+        let addRequest = AddResponseRequest(surveyId: surveyId, surveyInstanceId: surveyInstanceId, questionText: questionText, responseCreateAt: date, responseUpdateAt: date, response: answer, questionTypeId: Int(questionTypeId), sequenceNo: Int(sequenceNo), shouldMarkComplete: tempQuestionList.last?.document?.name == questionElement.document?.name, shouldMarkPartial: tempQuestionList.last?.document?.name != questionElement.document?.name,nextQuestionTracker: nextQuestionTracker)
         apiController.addResponse(addRequest, { isSuccess, error, data in
             if isSuccess == true, let data = data {
                 if let string = String(data: data, encoding: .utf8) {
@@ -436,28 +428,36 @@ extension BabbleViewController: BabbleSurveyResponseProtocol {
         })
     }
     
-    fileprivate func presentNextScreen(responseAnswer: String?) {
+    fileprivate func presentNextScreen(checkForNextQuestion: String?,answer:String?,questionElement: QuestionListResponseElement?) {
         if(currentScreenIndex<(questionListResponse.count-1))
         {
             
-            if (currentScreenIndex != -1 && responseAnswer != nil && questionListResponse[currentScreenIndex].document?.fields?.nextQuestion != nil && questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[responseAnswer!] != nil){
-                if((questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[responseAnswer!]?.stringValue ?? "").lowercased() == "end"){
+            if (currentScreenIndex != -1 && checkForNextQuestion != nil && questionListResponse[currentScreenIndex].document?.fields?.nextQuestion != nil && (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!] != nil || questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?["any"] != nil)){
+                if((questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!]?.stringValue ?? "").lowercased() == "end"){
                     guard let completion = self.completionBlock else { return }
                     self.runCloseAnimation {
                         completion()
                     }
                 }else{
-                    for i in currentScreenIndex...(questionListResponse.count-1) {
-                        if( ((questionListResponse[i].document?.name ?? "") as NSString).lastPathComponent == (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[responseAnswer!]?.stringValue ?? ""))
-                        {
-                            currentScreenIndex = i
-                            break
-                        }else if(i == (questionListResponse.count-1)){
-                            currentScreenIndex = currentScreenIndex+1
+                    let index = questionListResponse[currentScreenIndex...(questionListResponse.count-1)].firstIndex{
+                        if((questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!]?.stringValue ?? "") != ""){
+                            return (($0.document?.name ?? "") as NSString).lastPathComponent == (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!]?.stringValue ?? "")
+                        }else if(questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?["any"] != nil){
+                            return  (($0.document?.name ?? "") as NSString).lastPathComponent == (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?["any"]?.stringValue ?? "")
+                        }else{
+                            return false
                         }
+                    }
+                    if(index != nil){
+                        currentScreenIndex = index!
+                    }else{
+                        currentScreenIndex = currentScreenIndex+1
                     }
                     self.setupUIAccordingToConfiguration()
                     self.progressBar.setProgress(Float(CGFloat(self.currentScreenIndex + 1 )/CGFloat(questionListResponse.count)), animated: true)
+                }
+                if(answer != nil && !(answer ?? "").isEmpty){
+                    self.addResponse(answer: answer!, questionElement: questionElement!)
                 }
             }else{
                 currentScreenIndex = currentScreenIndex+1

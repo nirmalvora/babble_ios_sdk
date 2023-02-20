@@ -11,7 +11,7 @@ struct AddResponseRequest: Codable {
     
     let questionTypeId, sequenceNo: Int?
     
-    let shouldMarkComplete, shouldMarkPartial: Bool?
+    let shouldMarkComplete, shouldMarkPartial, nextQuestionTracker: Bool?
     
     enum CodingKeys: String, CodingKey {
         case surveyId = "survey_id"
@@ -23,6 +23,7 @@ struct AddResponseRequest: Codable {
         case responseUpdateAt = "response_updated_at"
         case shouldMarkComplete = "should_mark_complete"
         case shouldMarkPartial = "should_mark_partial"
+        case nextQuestionTracker = "next_question_tracker"
         case response = "response"
     }
 }

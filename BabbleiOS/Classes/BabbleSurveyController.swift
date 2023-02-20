@@ -23,6 +23,7 @@ class BabbleSurveyController: NSObject {
                 }
                 catch {
                     initApiFailed=true
+                    BabbleLog.writeLog("getAllSurveys   parsing failed- Failed")
                 }
             } else {
                 initApiFailed=true
@@ -40,6 +41,7 @@ class BabbleSurveyController: NSObject {
                 }
                 catch {
                     initApiFailed=true
+                    BabbleLog.writeLog("getAllTriggers  parsing failed - Failed")
                 }
             } else {
                 initApiFailed=true
@@ -55,8 +57,9 @@ class BabbleSurveyController: NSObject {
                 do {
                     self.projectDetailsController.questionListResponse = try JSONDecoder().decode(QuestionListResponse.self, from: data)
                 }
-                catch {
+                catch let error{
                     initApiFailed=true
+                    BabbleLog.writeLog("getAllQuestions  parsing failed - Failed \(error)")
                 }
             } else {
                 initApiFailed=true
@@ -82,6 +85,7 @@ class BabbleSurveyController: NSObject {
                 }
                 catch {
                     initApiFailed=true
+                    BabbleLog.writeLog("getStyle parsing failed - Failed")
                 }
             } else {
                 initApiFailed=true
@@ -237,6 +241,8 @@ class BabbleSurveyController: NSObject {
                     }
                 }
             }
+        }else{
+            print("Babble SDK not initialize")
         }
     }
     
