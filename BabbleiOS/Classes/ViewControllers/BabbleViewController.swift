@@ -405,35 +405,13 @@ extension BabbleViewController: BabbleSurveyResponseProtocol {
         self.presentNextScreen(checkForNextQuestion: selectedOptions.isEmpty ? "" : selectedOptions[0],answer: selectedOptions.joined(separator: ","), questionElement: questionListResponse[currentScreenIndex])
     }
     
-    func addResponse(answer: String,questionElement: QuestionListResponseElement){
-        let tempQuestionList =
-        questionListResponse.filter { $0.document?.fields?.questionTypeID?.integerValue != "6" &&  $0.document?.fields?.questionTypeID?.integerValue != "9" }
-        let surveyId = questionElement.document?.fields?.surveyID?.stringValue ?? ""
-        let nextQuestionTracker = ( questionListResponse[currentScreenIndex].document?.fields?.questionTypeID?.integerValue ?? "") != "9"
-        let questionTypeId = questionElement.document?.fields?.questionTypeID?.integerValue ?? "-1"
-        let sequenceNo = questionElement.document?.fields?.sequenceNo?.integerValue ?? "-1"
-        let questionText = questionElement.document?.fields?.questionText?.stringValue ?? ""
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
-        let date = dateFormatter.string(from: Date())
-        let addRequest = AddResponseRequest(surveyId: surveyId, surveyInstanceId: surveyInstanceId, questionText: questionText, responseCreateAt: date, responseUpdateAt: date, response: answer, questionTypeId: Int(questionTypeId), sequenceNo: Int(sequenceNo), shouldMarkComplete: tempQuestionList.last?.document?.name == questionElement.document?.name, shouldMarkPartial: tempQuestionList.last?.document?.name != questionElement.document?.name,nextQuestionTracker: nextQuestionTracker)
-        apiController.addResponse(addRequest, { isSuccess, error, data in
-            if isSuccess == true, let data = data {
-                if let string = String(data: data, encoding: .utf8) {
-                    print(string)
-                }
-            } else {
-                print("createSurveyInstance failed")
-            }
-        })
-    }
-    
     fileprivate func presentNextScreen(checkForNextQuestion: String?,answer:String?,questionElement: QuestionListResponseElement?) {
+        var hasNextQuestion = true
         if(currentScreenIndex<(questionListResponse.count-1))
         {
-            
             if (currentScreenIndex != -1 && checkForNextQuestion != nil && questionListResponse[currentScreenIndex].document?.fields?.nextQuestion != nil && (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!] != nil || questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?["any"] != nil)){
                 if((questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!]?.stringValue ?? "").lowercased() == "end" || (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?["any"]?.stringValue ?? "").lowercased() == "end"){
+                    hasNextQuestion = false
                     guard let completion = self.completionBlock else { return }
                     self.runCloseAnimation {
                         completion()
@@ -456,24 +434,44 @@ extension BabbleViewController: BabbleSurveyResponseProtocol {
                     self.setupUIAccordingToConfiguration()
                     self.progressBar.setProgress(Float(CGFloat(self.currentScreenIndex + 1 )/CGFloat(questionListResponse.count)), animated: true)
                 }
-                if(answer != nil && !(answer ?? "").isEmpty){
-                    self.addResponse(answer: answer!, questionElement: questionElement!)
-                }
-            }else{
+            } else {
                 currentScreenIndex = currentScreenIndex+1
-                if(answer != nil && !(answer ?? "").isEmpty){
-                    self.addResponse(answer: answer!, questionElement: questionElement!)
-                }
                 self.setupUIAccordingToConfiguration()
                 self.progressBar.setProgress(Float(CGFloat(self.currentScreenIndex + 1 )/CGFloat(questionListResponse.count)), animated: true)
             }
-            
         } else {
+            hasNextQuestion = false
             guard let completion = self.completionBlock else { return }
             self.runCloseAnimation {
                 completion()
             }
         }
+        if(questionElement != nil)
+        {
+            self.addResponse(answer: answer ?? "", questionElement: questionElement!, hasNextQuestion: hasNextQuestion)
+        }
     }
     
+    func addResponse(answer: String,questionElement: QuestionListResponseElement, hasNextQuestion: Bool){
+        let tempQuestionList =
+        questionListResponse.filter { $0.document?.fields?.questionTypeID?.integerValue != "6" &&  $0.document?.fields?.questionTypeID?.integerValue != "9" }
+        let surveyId = questionElement.document?.fields?.surveyID?.stringValue ?? ""
+        let nextQuestionTracker = ( questionListResponse[currentScreenIndex].document?.fields?.questionTypeID?.integerValue ?? "") != "9"  && hasNextQuestion
+        let questionTypeId = questionElement.document?.fields?.questionTypeID?.integerValue ?? "-1"
+        let sequenceNo = questionElement.document?.fields?.sequenceNo?.integerValue ?? "-1"
+        let questionText = questionElement.document?.fields?.questionText?.stringValue ?? ""
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
+        let date = dateFormatter.string(from: Date())
+        let addRequest = AddResponseRequest(surveyId: surveyId, surveyInstanceId: surveyInstanceId, questionText: questionText, responseCreateAt: date, responseUpdateAt: date, response: answer, questionTypeId: Int(questionTypeId), sequenceNo: Int(sequenceNo), shouldMarkComplete: tempQuestionList.last?.document?.name == questionElement.document?.name, shouldMarkPartial: tempQuestionList.last?.document?.name != questionElement.document?.name,nextQuestionTracker: nextQuestionTracker)
+        apiController.addResponse(addRequest, { isSuccess, error, data in
+            if isSuccess == true, let data = data {
+                if let string = String(data: data, encoding: .utf8) {
+                    print(string)
+                }
+            } else {
+                print("createSurveyInstance failed")
+            }
+        })
+    }
 }

@@ -77,6 +77,8 @@ final class BabbleAPIController: NSObject, APIProtocol {
     func addResponse(_ request:  AddResponseRequest,_ completion: @escaping APICompletionBlock) {
         do {
             let jsonData = try JSONEncoder().encode(request)
+            let str = String(decoding: jsonData, as: UTF8.self)
+            print(str)
             urlRequestManager.postAPIWith("write_survery_question_response",parameters: jsonData, header: ["babble_user_id":BabbleProjectDetailsController.shared.apiKey!], completion: completion)
         } catch {
             fatalError(error.localizedDescription)
