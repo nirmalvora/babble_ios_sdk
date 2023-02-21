@@ -391,7 +391,7 @@ class BabbleViewController: UIViewController {
 
 extension BabbleViewController: BabbleSurveyResponseProtocol {
     func textSurveySubmit(_ text: String?) {
-        self.presentNextScreen(checkForNextQuestion: nil, answer: text, questionElement: questionListResponse[currentScreenIndex])
+        self.presentNextScreen(checkForNextQuestion: "", answer: text, questionElement: questionListResponse[currentScreenIndex])
     }
     
     func numericRatingSubmit(_ text: Int?) {
@@ -412,9 +412,11 @@ extension BabbleViewController: BabbleSurveyResponseProtocol {
             if (currentScreenIndex != -1 && checkForNextQuestion != nil && questionListResponse[currentScreenIndex].document?.fields?.nextQuestion != nil && (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!] != nil || questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?["any"] != nil)){
                 if((questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!]?.stringValue ?? "").lowercased() == "end" || (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?["any"]?.stringValue ?? "").lowercased() == "end"){
                     hasNextQuestion = false
-                    guard let completion = self.completionBlock else { return }
-                    self.runCloseAnimation {
-                        completion()
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+                        guard let completion = self.completionBlock else { return }
+                        self.runCloseAnimation {
+                            completion()
+                        }
                     }
                 }else{
                     let index = questionListResponse[currentScreenIndex...(questionListResponse.count-1)].firstIndex{
@@ -441,9 +443,11 @@ extension BabbleViewController: BabbleSurveyResponseProtocol {
             }
         } else {
             hasNextQuestion = false
-            guard let completion = self.completionBlock else { return }
-            self.runCloseAnimation {
-                completion()
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+                guard let completion = self.completionBlock else { return }
+                self.runCloseAnimation {
+                    completion()
+                }
             }
         }
         if(questionElement != nil)
