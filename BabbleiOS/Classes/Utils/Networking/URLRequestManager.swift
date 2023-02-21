@@ -15,7 +15,7 @@ protocol URLRequestManagerProtocol {
 class URLRequestManager: URLRequestManagerProtocol {
     let BaseURL: String = "https://babble-app-backend.herokuapp.com/"
     func getAPIWith(_ endPoint: String, header: [String: String], completion: @escaping APICompletionBlock) {
-        var request = URLRequest(url: URL(string: "\(BaseURL)\(endPoint)")!)
+        var request = URLRequest(url: URL(string: "\(baseURL)\(endPoint)")!)
         request.httpMethod = "GET"
         header.forEach { (key: String, value: String) in
             request.addValue(value, forHTTPHeaderField: key)
@@ -41,8 +41,8 @@ class URLRequestManager: URLRequestManagerProtocol {
     }
     
     func postAPIWith(_ endPoint: String, parameters: Data, header: [String: String], completion: @escaping APICompletionBlock) {
-        let BaseURL: String = "https://pri9rvopx2.execute-api.ap-south-1.amazonaws.com/prod-2/"
-        var request = URLRequest(url: URL(string: "\(BaseURL)\(endPoint)")!)
+       
+        var request = URLRequest(url: URL(string: "\(baseURL)\(endPoint)")!)
         request.httpMethod = "POST"
         request.httpBody = parameters
         header.forEach { (key: String, value: String) in
