@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 class BabbleSurveyController: NSObject {
+    var timerTask: DispatchWorkItem?
     var surveyWindow: UIWindow?
     private var isInitialized: Bool = false
     var apiController : APIProtocol = BabbleAPIController()
@@ -120,6 +121,27 @@ class BabbleSurveyController: NSObject {
             }
         })
         
+        getBEAndES()
+        
+        if(!((userDetails ?? [:]).isEmpty))
+        {
+            var customerPropertiesRequest = [String: Any]()
+            customerPropertiesRequest["properties"] = userDetails
+            customerPropertiesRequest["user_id"] = self.projectDetailsController.apiKey!
+            customerPropertiesRequest["customer_id"] = self.projectDetailsController.customerId ?? ""
+            apiController.setCustomerProperties(customerPropertiesRequest, { isSuccess, error, data in
+                if isSuccess == true, let data = data {
+                    if let string = String(data: data, encoding: .utf8) {
+                        print(string)
+                    }
+                } else {
+                    print("setCustomerProperties failed")
+                }
+            })
+        }
+    }
+    
+    func getBEAndES(){
         apiController.getBackendEvents({ isSuccess, error, data in
             if isSuccess == true, let data = data {
                 do {
@@ -146,23 +168,6 @@ class BabbleSurveyController: NSObject {
                 print("getEligibleSurveyIds Failed")
             }
         })
-        
-        if(!((userDetails ?? [:]).isEmpty))
-        {
-            var customerPropertiesRequest = [String: Any]()
-            customerPropertiesRequest["properties"] = userDetails
-            customerPropertiesRequest["user_id"] = self.projectDetailsController.apiKey!
-            customerPropertiesRequest["customer_id"] = self.projectDetailsController.customerId ?? ""
-            apiController.setCustomerProperties(customerPropertiesRequest, { isSuccess, error, data in
-                if isSuccess == true, let data = data {
-                    if let string = String(data: data, encoding: .utf8) {
-                        print(string)
-                    }
-                } else {
-                    print("setCustomerProperties failed")
-                }
-            })
-        }
     }
     
     
@@ -175,75 +180,99 @@ class BabbleSurveyController: NSObject {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
                 let sortedSurvey = self.projectDetailsController.surveyResponseList?.sorted(by: { dateFormatter.date(from:($0.document?.fields?.createdAt?.stringValue ?? ""))!.compare(dateFormatter.date(from:($1.document?.fields?.createdAt?.stringValue ?? ""))!) == .orderedDescending })
-                if let survey = sortedSurvey?.first(where: {($0.document?.fields?.triggerID?.stringValue ?? "") == triggerId})
+                
+                if let surveyList = sortedSurvey?.filter({($0.document?.fields?.triggerID?.stringValue ?? "") == triggerId})
                 {
-                    let surveyId = ((survey.document?.name ?? "") as NSString).lastPathComponent
-                    
-                    
-                    let isEligibleSurvey = (self.projectDetailsController.eligibleSurveyResponse?.eligibleSurveyIDS ?? []).contains(surveyId)
-                    if(isEligibleSurvey){
-                        let questionList = self.projectDetailsController.questionListResponse?.filter({($0.document?.fields?.surveyID?.stringValue ?? "") == surveyId} )
-                        let cohortId: String? = survey.document?.fields?.cohortId?.stringValue
-                        let eventName: String? = survey.document?.fields?.eventName?.stringValue
-                        
-                        
-                        let eventList =  self.projectDetailsController.backendEventResoinse?.filter({
-                            var dateCheck = false
-                            let date: Date? = $0.document?.fields?.createdAt?.stringValue ?? "" != "" ? dateFormatter.date(from:($0.document?.fields?.createdAt?.stringValue ?? "")) : nil
-                            let currentDate = Date()
+                    for survey in surveyList {
+                        let surveyId = ((survey.document?.name ?? "") as NSString).lastPathComponent
+                        let isEligibleSurvey = (self.projectDetailsController.eligibleSurveyResponse?.eligibleSurveyIDS ?? []).contains(surveyId)
+                        if(isEligibleSurvey){
+                            let questionList = self.projectDetailsController.questionListResponse?.filter({($0.document?.fields?.surveyID?.stringValue ?? "") == surveyId} )
+                            let cohortId: String? = survey.document?.fields?.cohortId?.stringValue
+                            let eventName: String? = survey.document?.fields?.eventName?.stringValue
                             
-                            if(date != nil && survey.document?.fields?.relevancePeriod?.stringValue != nil && !(survey.document?.fields?.relevancePeriod?.stringValue ?? "").isEmpty )
-                            {
+                            
+                            let eventList =  self.projectDetailsController.backendEventResoinse?.filter({
+                                var dateCheck = false
+                                let date: Date? = $0.document?.fields?.createdAt?.stringValue ?? "" != "" ? dateFormatter.date(from:($0.document?.fields?.createdAt?.stringValue ?? "")) : nil
+                                let currentDate = Date()
                                 
-                                let modifiedDate = Calendar.current.date(byAdding: .hour, value: Int(survey.document?.fields?.relevancePeriod?.stringValue ?? "0")!, to: date!)!
-                                
-                                dateCheck = modifiedDate > currentDate
-                            }
-                            if (survey.document?.fields?.relevancePeriod?.stringValue == nil || (survey.document?.fields?.relevancePeriod?.stringValue ?? "").isEmpty) {
-                                dateCheck = true
-                            }
-                            return ($0.document?.fields?.eventName?.stringValue ?? "") == eventName && dateCheck
-                        })
-                        
-                        let cohortIds = self.projectDetailsController.cohortResonse?.map({(($0.document?.name ?? "") as NSString).lastPathComponent}) ?? []
-                        let cohortCheck = (cohortId == nil || cohortId!.isEmpty || cohortIds.contains(
-                            cohortId!
-                        ) == true)
-                        
-                        let eventCheck = eventName == nil || eventName!.isEmpty || !(eventList ?? []).isEmpty
-                        
-                        let showSurvey =
-                        questionList != nil && !questionList!.isEmpty && cohortCheck && eventCheck
-                        
-                        if(showSurvey){
-                            let sortedQuestionList = questionList?.sorted(by: {
-                                let value1 = Int($0.document?.fields?.sequenceNo?.integerValue ?? "0")!
-                                let value2 = Int($1.document?.fields?.sequenceNo?.integerValue ?? "0")!
-                                return value1 < value2
-                                
+                                if(date != nil && survey.document?.fields?.relevancePeriod?.stringValue != nil && !(survey.document?.fields?.relevancePeriod?.stringValue ?? "").isEmpty )
+                                {
+                                    
+                                    let modifiedDate = Calendar.current.date(byAdding: .hour, value: Int(survey.document?.fields?.relevancePeriod?.stringValue ?? "0")!, to: date!)!
+                                    
+                                    dateCheck = modifiedDate > currentDate
+                                }
+                                if (survey.document?.fields?.relevancePeriod?.stringValue == nil || (survey.document?.fields?.relevancePeriod?.stringValue ?? "").isEmpty) {
+                                    dateCheck = true
+                                }
+                                return ($0.document?.fields?.eventName?.stringValue ?? "") == eventName && dateCheck
                             })
-                            let surveyInstanceId = self.randomString(length: 10)
-                            self.createSurveyInstance(surveyId: surveyId, eventIds: eventList, surveyInstanceId: surveyInstanceId,properties: properties)
-                            self.openSurvey(sortedQuestionList!, surveyInstanceId)
+                            
+                            let cohortIds = self.projectDetailsController.cohortResonse?.map({(($0.document?.name ?? "") as NSString).lastPathComponent}) ?? []
+                            let cohortCheck = (cohortId == nil || cohortId!.isEmpty || cohortIds.contains(
+                                cohortId!
+                            ) == true)
+                            
+                            let eventCheck = eventName == nil || eventName!.isEmpty || !(eventList ?? []).isEmpty
+                            
+                            let showSurvey =
+                            questionList != nil && !questionList!.isEmpty && cohortCheck && eventCheck
+                            
+                            if(showSurvey){
+                                let randomSample = Int.random(in: 0..<100)
+                                let samplingValue = Int(survey.document?.fields?.samplingPercentage?.integerValue ?? "0") ?? 100
+                                BabbleLog.writeLog("Trigger \(randomSample) \(samplingValue)")
+                                if(randomSample < samplingValue){
+                                    let sortedQuestionList = questionList?.sorted(by: {
+                                        let value1 = Int($0.document?.fields?.sequenceNo?.integerValue ?? "0")!
+                                        let value2 = Int($1.document?.fields?.sequenceNo?.integerValue ?? "0")!
+                                        return value1 < value2
+                                        
+                                    })
+                                    let triggerDelay = Int(survey.document?.fields?.triggerDelay?.integerValue ?? "0") ?? 0
+                                    let surveyInstanceId = self.randomString(length: 10)
+                                    self.createSurveyInstance(surveyId: surveyId, eventIds: eventList, surveyInstanceId: surveyInstanceId,properties: properties)
+                                    getBEAndES()
+                                    timerTask = DispatchWorkItem {  self.openSurvey(sortedQuestionList!, surveyInstanceId) }
+                                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(triggerDelay), execute: timerTask!)
+                                    break
+                                }else{
+                                    BabbleLog.writeLog("Sampling fail")
+                                    break
+                                }
+                                
+                            }else{
+                                if(!cohortCheck){
+                                    BabbleLog.writeLog("Cohort not found for survey id")
+                                }
+                                if(questionList == nil || (questionList ?? []).isEmpty){
+                                    BabbleLog.writeLog("Question not found for survey")
+                                }
+                                if(!eventCheck){
+                                    BabbleLog.writeLog("Matching event not found for survey")
+                                }
+                            }
                         }else{
-                            if(!cohortCheck){
-                                BabbleLog.writeLog("Cohort not found for survey id")
-                            }
-                            if(questionList == nil || (questionList ?? []).isEmpty){
-                                BabbleLog.writeLog("Question not found for survey")
-                            }
-                            if(!eventCheck){
-                                BabbleLog.writeLog("Matching event not found for survey")
-                            }
+                            BabbleLog.writeLog("Survey id not eligible for customer")
                         }
-                    }else{
-                        BabbleLog.writeLog("Survey id not eligible for customer")
+                        
+                        
                     }
+                    
                 }
+                
+                
+                
             }
         }else{
             print("Babble SDK not initialize")
         }
+    }
+    
+    func cancelSurvey(){
+        timerTask?.cancel()
     }
     
     func createSurveyInstance(surveyId: String, eventIds: [BackendEventResponseElement]?, surveyInstanceId: String,properties: [String: Any]? = nil){
@@ -257,6 +286,8 @@ class BabbleSurveyController: NSObject {
         surveyInstanceRequest["customer_id"] = self.projectDetailsController.customerId ?? ""
         surveyInstanceRequest["survey_instance_id"] = surveyInstanceId
         surveyInstanceRequest["device_platform"] = "iOS"
+        surveyInstanceRequest["type"] = "Mobile-app"
+        surveyInstanceRequest["device_type"] = "Mobile"
         surveyInstanceRequest["backend_event_ids"] = eventIds?.map({(($0.document?.name ?? "") as NSString).lastPathComponent}) ?? []
         apiController.createSurveyInstance(surveyInstanceRequest, { isSuccess, error, data in
             if isSuccess == true, let data = data {

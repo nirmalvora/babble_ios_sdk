@@ -38,4 +38,8 @@ public final class BabbleSdk: NSObject {
             shared.babbleSurveyController.triggerSurvey(triggerName:trigger, properties: properties)
         }
     }
+    
+    @objc public class func cancelSurvey() {
+        shared.babbleSurveyController.cancelSurvey()
+    }
 }

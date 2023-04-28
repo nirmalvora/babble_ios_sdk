@@ -35,6 +35,7 @@ struct Fields: Codable {
     let title, status, maxResponses, endDate, eventName, cohortId, relevancePeriod: StringValue?
     let userID, createdAt, triggerID, startDate: StringValue?
     let updatedAt: StringValue?
+    let samplingPercentage, triggerDelay: IntegerValue?
 
     enum CodingKeys: String, CodingKey {
         case title, status
@@ -48,6 +49,8 @@ struct Fields: Codable {
         case eventName = "event_name"
         case cohortId = "cohort_id"
         case relevancePeriod = "relevance_period"
+        case samplingPercentage = "sampling_percentage"
+        case triggerDelay = "trigger_delay"
     }
 }
 

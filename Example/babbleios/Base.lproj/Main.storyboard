@@ -27,11 +27,23 @@
                                     <action selector="openSurveyClick:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="fVt-ye-sI5"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8z-h8-cwh">
+                                <rect key="frame" x="129" y="420" width="117" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Cancel Survey"/>
+                                <connections>
+                                    <action selector="closeSurvey:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="EF9-9H-Ehg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Keg-zf-0Sc" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="7jb-0z-Mu5"/>
                             <constraint firstItem="Keg-zf-0Sc" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="LOi-3C-U16"/>
+                            <constraint firstItem="O8z-h8-cwh" firstAttribute="top" secondItem="Keg-zf-0Sc" secondAttribute="bottom" constant="71" id="Lqi-c5-V3h"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="O8z-h8-cwh" secondAttribute="trailing" constant="113" id="UYD-q3-jHe"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="O8z-h8-cwh" secondAttribute="bottom" constant="216" id="o4s-n8-DTr"/>
+                            <constraint firstItem="O8z-h8-cwh" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="113" id="xEO-Tt-HrU"/>
                         </constraints>
                     </view>
                 </viewController>

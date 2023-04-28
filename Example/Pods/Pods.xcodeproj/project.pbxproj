@@ -547,8 +547,8 @@
 		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -763,10 +763,11 @@
 			};
 			name = Release;
 		};
-		1956690B70F2B4167B96CE988D64AB01 /* Debug */ = {
+		39082D61AC0D07758999BF7AC058CF1B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 19729305F69BB2FF843C6453EC0ACC41 /* BabbleiOS.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BabbleiOS";
 				IBSC_MODULE = BabbleiOS;
 				INFOPLIST_FILE = "Target Support Files/BabbleiOS/ResourceBundle-SurveySDK-BabbleiOS-Info.plist";
@@ -872,22 +873,6 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Release;
-		};
-		84896C35834DBF7FCE679C5B035D9838 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D608FFF1AAD79EC8212B235336E9BE21 /* BabbleiOS.release.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BabbleiOS";
-				IBSC_MODULE = BabbleiOS;
-				INFOPLIST_FILE = "Target Support Files/BabbleiOS/ResourceBundle-SurveySDK-BabbleiOS-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				PRODUCT_NAME = SurveySDK;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -1055,6 +1040,23 @@
 			};
 			name = Debug;
 		};
+		F4B06F8BCD7968F2CF20DFB6CB3A283A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D608FFF1AAD79EC8212B235336E9BE21 /* BabbleiOS.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BabbleiOS";
+				IBSC_MODULE = BabbleiOS;
+				INFOPLIST_FILE = "Target Support Files/BabbleiOS/ResourceBundle-SurveySDK-BabbleiOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				PRODUCT_NAME = SurveySDK;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1097,8 +1099,8 @@
 		E7639C4DA9BFA5288C55A4EBD7CA19D7 /* Build configuration list for PBXNativeTarget "BabbleiOS-SurveySDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1956690B70F2B4167B96CE988D64AB01 /* Debug */,
-				84896C35834DBF7FCE679C5B035D9838 /* Release */,
+				39082D61AC0D07758999BF7AC058CF1B /* Debug */,
+				F4B06F8BCD7968F2CF20DFB6CB3A283A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
