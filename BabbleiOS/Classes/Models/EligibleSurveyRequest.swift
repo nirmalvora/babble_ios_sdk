@@ -14,3 +14,12 @@ struct EligibleSurveyRequest: Codable {
         case customerId = "customer_id"
     }
 }
+
+struct SurveyCloseRequest: Codable {
+    let surveyInstanceId: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case surveyInstanceId = "survey_instance_id"
+    }
+}
+

@@ -27,6 +27,7 @@ protocol APIProtocol {
     func setCustomerProperties(_ request:  [String: Any],_ completion: @escaping APICompletionBlock)
     func addResponse(_ request:  AddResponseRequest,_ completion: @escaping APICompletionBlock)
     func getEligibleSurveyIds(_ request:  EligibleSurveyRequest,_ completion: @escaping APICompletionBlock)
+    func surveyClose(_ request:  SurveyCloseRequest,_ completion: @escaping APICompletionBlock)
 }
 
 final class BabbleAPIController: NSObject, APIProtocol {
@@ -92,4 +93,14 @@ final class BabbleAPIController: NSObject, APIProtocol {
             fatalError(error.localizedDescription)
         }
     }
+    
+    func surveyClose(_ request:  SurveyCloseRequest,_ completion: @escaping APICompletionBlock) {
+        do {
+            let jsonData = try JSONEncoder().encode(request)
+            urlRequestManager.postAPIWith("survey_close",parameters: jsonData, header: [:], completion: completion)
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+    }
+    
 }

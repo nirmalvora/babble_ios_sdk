@@ -337,7 +337,15 @@ class BabbleSurveyController: NSObject {
         self.surveyWindow?.rootViewController = controller
         controller.completionBlock = {
             DispatchQueue.main.async {
-                self.getBEAndES()
+                let surveyCloseRequest = SurveyCloseRequest(surveyInstanceId: surveyInstanceId)
+                self.apiController.surveyClose(surveyCloseRequest, { isSuccess, error, data in
+                    if isSuccess == true, let data = data {
+                        print(data)
+                        self.getBEAndES()
+                    } else {
+                        print("surveyClose failed")
+                    }
+                })
                 self.surveyWindow?.isHidden = true
                 self.surveyWindow = nil
             }
