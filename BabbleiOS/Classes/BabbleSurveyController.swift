@@ -234,13 +234,11 @@ class BabbleSurveyController: NSObject {
                                     let triggerDelay = Int(survey.document?.fields?.triggerDelay?.integerValue ?? "0") ?? 0
                                     let surveyInstanceId = self.randomString(length: 10)
                                     self.createSurveyInstance(surveyId: surveyId, eventIds: eventList, surveyInstanceId: surveyInstanceId,properties: properties)
-                                    getBEAndES()
                                     timerTask = DispatchWorkItem {  self.openSurvey(sortedQuestionList!, surveyInstanceId) }
                                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(triggerDelay), execute: timerTask!)
                                     break
                                 }else{
                                     BabbleLog.writeLog("Sampling fail")
-                                    break
                                 }
                                 
                             }else{
@@ -339,6 +337,7 @@ class BabbleSurveyController: NSObject {
         self.surveyWindow?.rootViewController = controller
         controller.completionBlock = {
             DispatchQueue.main.async {
+                self.getBEAndES()
                 self.surveyWindow?.isHidden = true
                 self.surveyWindow = nil
             }
