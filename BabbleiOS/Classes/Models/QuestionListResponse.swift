@@ -10,6 +10,7 @@ import Foundation
 struct QuestionListResponseElement: Codable {
     let document: QuestionDocument?
     let readTime: String?
+    var selectedOptions: String?
 }
 
 struct QuestionDocument: Codable {
@@ -19,12 +20,10 @@ struct QuestionDocument: Codable {
 }
 
 struct QuestionFields: Codable {
-    let questionText: StringValue?
     let isDefault: BooleanValue?
     let answers: Answers?
-    let surveyID, questionDesc, ctaText, id, maxValDescription, minValDescription: StringValue?
+    let surveyID, questionDesc, ctaText, id, maxValDescription, minValDescription,correctAnswer,userID,questionText: StringValue?
     let sequenceNo: IntegerValue?
-    let userID: StringValue?
     let questionTypeID: IntegerValue?
     let inactive: BooleanValue?
     let nextQuestion: NextQuestion?
@@ -43,6 +42,7 @@ struct QuestionFields: Codable {
         case userID = "user_id"
         case questionTypeID = "question_type_id"
         case nextQuestion = "next_question"
+        case correctAnswer = "correct_answer"
         case inactive
     }
 }

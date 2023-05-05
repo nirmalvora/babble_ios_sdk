@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func openSurveyClick(_ sender: UIButton) {
-        BabbleSdk.trigger("fintech4",properties: ["firstname":"Nirmal"])
+        BabbleSdk.trigger("quizz",properties: ["firstname":"Nirmal"])
     }
     
     @IBAction func closeSurvey(_ sender: UIButton) {

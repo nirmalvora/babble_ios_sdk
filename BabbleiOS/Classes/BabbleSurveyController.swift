@@ -225,16 +225,18 @@ class BabbleSurveyController: NSObject {
                                 let samplingValue = Int(survey.document?.fields?.samplingPercentage?.integerValue ?? "0") ?? 100
                                 BabbleLog.writeLog("Trigger \(randomSample) \(samplingValue)")
                                 if(randomSample < samplingValue){
-                                    let sortedQuestionList = questionList?.sorted(by: {
-                                        let value1 = Int($0.document?.fields?.sequenceNo?.integerValue ?? "0")!
-                                        let value2 = Int($1.document?.fields?.sequenceNo?.integerValue ?? "0")!
-                                        return value1 < value2
-                                        
-                                    })
                                     let triggerDelay = Int(survey.document?.fields?.triggerDelay?.integerValue ?? "0") ?? 0
-                                    let surveyInstanceId = self.randomString(length: 10)
-                                    self.createSurveyInstance(surveyId: surveyId, eventIds: eventList, surveyInstanceId: surveyInstanceId,properties: properties)
-                                    timerTask = DispatchWorkItem {  self.openSurvey(sortedQuestionList!, surveyInstanceId) }
+                                    timerTask = DispatchWorkItem {
+                                        let sortedQuestionList = questionList?.sorted(by: {
+                                            let value1 = Int($0.document?.fields?.sequenceNo?.integerValue ?? "0")!
+                                            let value2 = Int($1.document?.fields?.sequenceNo?.integerValue ?? "0")!
+                                            return value1 < value2
+                                            
+                                        })
+                                        let surveyInstanceId = self.randomString(length: 10)
+                                        self.createSurveyInstance(surveyId: surveyId, eventIds: eventList, surveyInstanceId: surveyInstanceId,properties: properties)
+                                        self.openSurvey(sortedQuestionList!, surveyInstanceId,survey)
+                                    }
                                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(triggerDelay), execute: timerTask!)
                                     break
                                 }else{
@@ -304,7 +306,7 @@ class BabbleSurveyController: NSObject {
     }
     
     
-    func openSurvey(_ questionListResponse: [QuestionListResponseElement],_ surveyInstanceId: String){
+    func openSurvey(_ questionListResponse: [QuestionListResponseElement],_ surveyInstanceId: String,_ survey: SurveyResponseElement){
         if #available(iOS 13.0, *) {
             if let currentWindowScene = UIApplication.shared.connectedScenes.first as?  UIWindowScene {
                 self.surveyWindow = UIWindow(windowScene: currentWindowScene)
@@ -328,20 +330,20 @@ class BabbleSurveyController: NSObject {
         self.surveyWindow?.isHidden = false
         self.surveyWindow?.windowLevel = UIWindow.Level.alert
         let controller = BabbleViewController(nibName: "BabbleViewController", bundle: BabbleBundle.bundleForObject(self))
-        
+        controller.questionListResponse = questionListResponse
+        controller.survey = survey
+        controller.surveyInstanceId = surveyInstanceId
         controller.modalPresentationStyle = .overFullScreen
         controller.view.backgroundColor = UIColor.clear
-        controller.questionListResponse = questionListResponse
-        controller.surveyInstanceId = surveyInstanceId
         self.surveyWindow?.makeKeyAndVisible()
         self.surveyWindow?.rootViewController = controller
         controller.completionBlock = {
             DispatchQueue.main.async {
                 let surveyCloseRequest = SurveyCloseRequest(surveyInstanceId: surveyInstanceId)
                 self.apiController.surveyClose(surveyCloseRequest, { isSuccess, error, data in
+                    self.getBEAndES()
                     if isSuccess == true, let data = data {
                         print(data)
-                        self.getBEAndES()
                     } else {
                         print("surveyClose failed")
                     }

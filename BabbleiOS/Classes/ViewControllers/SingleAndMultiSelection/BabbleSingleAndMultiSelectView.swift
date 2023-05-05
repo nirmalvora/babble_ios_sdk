@@ -24,7 +24,7 @@ class BabbleSingleAndMultiSelectView: UIView {
     @IBOutlet weak var btnFinish: UIButton!
     var currentType:  BabbleRadioButton.BabbleRadioButtonType = BabbleRadioButton.BabbleRadioButtonType.radioButton
     var allOptions: [Codable]?
-    
+    var correctAnswer: String?
     let textFieldViewTag = 1001
     let enterButtonTag = 1002
     
@@ -38,11 +38,20 @@ class BabbleSingleAndMultiSelectView: UIView {
                 var selectedOptionIDs = [String]()
                 for view in self.stackView1.arrangedSubviews {
                     if let btn = view as? UIButton {
+                        if(btn.currentTitle == correctAnswer){
+                            btn.layer.backgroundColor = greenColor.cgColor
+                            btn.setTitleColor(UIColor.white, for: .normal)
+                        }
                         if btn.isSelected == true {
+                            if(btn.currentTitle != correctAnswer){
+                                btn.layer.backgroundColor = redColor.cgColor
+                                btn.setTitleColor(UIColor.white, for: .normal)
+                            }
                             selectedOptionIDs.append(btn.currentTitle!)
                         }
                     }
                 }
+                
                 self.delegate?.singleAndMultiSelectionSubmit(selectedOptionIDs)
             }
         }
@@ -54,9 +63,10 @@ class BabbleSingleAndMultiSelectView: UIView {
         }
     }
     
-    func setupViewWithOptions(_ options: [StringValue], type: BabbleRadioButton.BabbleRadioButtonType, parentViewWidth: CGFloat) {
+    func setupViewWithOptions(_ options: [StringValue], type: BabbleRadioButton.BabbleRadioButtonType, parentViewWidth: CGFloat,_ correctAnswer:String?) {
         self.currentType = type
         self.allOptions = options
+        self.correctAnswer = correctAnswer
         parentWidth = parentViewWidth
         if type == .checkBox {
             btnFinish.layer.cornerRadius = 5.0
@@ -76,7 +86,7 @@ class BabbleSingleAndMultiSelectView: UIView {
         
         for i in 0..<options.count {
             let option = options[i]
-            let button = BabbleRadioButton(frame: CGRect(x: 0, y: 0, width: parentViewWidth, height: 43), type: type)
+            let button = BabbleRadioButton(frame: CGRect(x: 0, y: 0, width: parentViewWidth, height: 43), type: type, !(correctAnswer ?? "").isEmpty)
             button.titleLabel?.lineBreakMode = .byWordWrapping
             button.setTitle(option.stringValue  ?? "", for: .normal)
             button.tag = i

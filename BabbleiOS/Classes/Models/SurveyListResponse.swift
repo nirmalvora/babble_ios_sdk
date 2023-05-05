@@ -36,6 +36,7 @@ struct Fields: Codable {
     let userID, createdAt, triggerID, startDate: StringValue?
     let updatedAt: StringValue?
     let samplingPercentage, triggerDelay: IntegerValue?
+    let isQuiz: BooleanValue?
 
     enum CodingKeys: String, CodingKey {
         case title, status
@@ -51,6 +52,7 @@ struct Fields: Codable {
         case relevancePeriod = "relevance_period"
         case samplingPercentage = "sampling_percentage"
         case triggerDelay = "trigger_delay"
+        case isQuiz = "is_quiz"
     }
 }
 

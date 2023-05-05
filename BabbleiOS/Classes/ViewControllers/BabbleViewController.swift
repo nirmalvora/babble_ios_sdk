@@ -9,6 +9,8 @@ import UIKit
 typealias BabbleSurveyViewCompletion = (() -> Void)
 class BabbleViewController: UIViewController {
     var questionListResponse: [QuestionListResponseElement] = []
+    var selectedAnswers: [QuestionListResponseElement] = []
+    var survey: SurveyResponseElement? = nil
     var surveyInstanceId: String = ""
     var apiController : APIProtocol = BabbleAPIController()
     @IBOutlet weak var mostContainerView: UIView!
@@ -22,10 +24,14 @@ class BabbleViewController: UIViewController {
     @IBOutlet weak var lblPrimaryTitle1: UILabel!
     @IBOutlet weak var lblSecondaryTitle: UILabel!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var lblQuizResult: UILabel!
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var poweredByButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var viewQuizResult: UIView!
+    @IBOutlet weak var quizResultTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var quizResultBottomConstraint: NSLayoutConstraint!
     var keyboardRect : CGRect!
     @IBOutlet weak var containerLeading: NSLayoutConstraint!
     @IBOutlet weak var containerTrailing: NSLayoutConstraint!
@@ -35,6 +41,7 @@ class BabbleViewController: UIViewController {
     @IBOutlet weak var stackViewTop: NSLayoutConstraint!
     @IBOutlet weak var stackViewBottom: NSLayoutConstraint!
     var currentScreenIndex = -1
+    var totalQuizQuestion: Int? = nil
     var widgetPosition =  "bottom-center"
     private var isKeyboardVisible = false
     var shouldRemoveWatermark = false
@@ -75,7 +82,36 @@ class BabbleViewController: UIViewController {
         self.containerView.backgroundColor = kBackgroundColor
         self.bottomView.backgroundColor = kBackgroundColor
         self.stackView.arrangedSubviews.forEach({ $0.backgroundColor = kBackgroundColor })
-        // Do any additional setup after loading the view.
+        if((survey?.document?.fields?.isQuiz?.booleanValue ?? false) == true) {
+            totalQuizQuestion = 0
+            selectedAnswers = []
+            questionListResponse.forEach {
+                if (($0.document?.fields?.questionTypeID?.integerValue ?? "0") == "2") {
+                    totalQuizQuestion = totalQuizQuestion! + 1
+                }
+            }
+            if(questionListResponse.last?.document?.fields?.questionTypeID?.integerValue != "9"){
+                do {
+                    let thankYouCard = try JSONDecoder().decode(QuestionListResponseElement.self, from: Data("""
+                    {
+                            "document": {
+                                "fields": {
+                                    "question_desc": {
+                                        "stringValue": ""
+                                    },
+                                    "question_type_id": {
+                                        "integerValue": "9"
+                                    }
+                                },
+                            },
+                        }
+                    """.utf8))
+                    questionListResponse.append(thankYouCard)
+                }catch {
+                    print(error)
+                }
+            }
+        }
     }
     
     
@@ -155,7 +191,7 @@ class BabbleViewController: UIViewController {
             self.viewSecondaryTitle.isHidden = true
         }
         
-        let indexToAddOn = 2
+        let indexToAddOn = 3
         if self.stackView.arrangedSubviews.count > indexToAddOn {
             let subView = self.stackView.arrangedSubviews[indexToAddOn]
             subView.removeFromSuperview()
@@ -166,7 +202,7 @@ class BabbleViewController: UIViewController {
             let view = BabbleSingleAndMultiSelectView.loadFromNib()
             view.delegate = self
             view.currentType = .checkBox
-            view.setupViewWithOptions(question.document?.fields?.answers?.arrayValue?.values ?? [], type: .checkBox, parentViewWidth: self.stackView.bounds.width)
+            view.setupViewWithOptions(question.document?.fields?.answers?.arrayValue?.values ?? [], type: .checkBox, parentViewWidth: self.stackView.bounds.width, nil)
             view.submitButtonTitle = question.document?.fields?.ctaText?.stringValue ?? "Submit"
             view.isHidden = true
             self.stackView.insertArrangedSubview(view, at: indexToAddOn)
@@ -175,7 +211,7 @@ class BabbleViewController: UIViewController {
             let view = BabbleSingleAndMultiSelectView.loadFromNib()
             view.delegate = self
             view.currentType = .radioButton
-            view.setupViewWithOptions(question.document?.fields?.answers?.arrayValue?.values ?? [], type: .radioButton, parentViewWidth: self.stackView.bounds.width)
+            view.setupViewWithOptions(question.document?.fields?.answers?.arrayValue?.values ?? [], type: .radioButton, parentViewWidth: self.stackView.bounds.width,question.document?.fields?.correctAnswer?.stringValue ?? "")
             view.submitButtonTitle = question.document?.fields?.ctaText?.stringValue ?? "Submit"
             view.isHidden = true
             self.stackView.insertArrangedSubview(view, at: indexToAddOn)
@@ -235,7 +271,32 @@ class BabbleViewController: UIViewController {
             self.stackView.insertArrangedSubview(view, at: indexToAddOn)
         case "9":
             self.stackView.alignment = .center
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+            if((survey?.document?.fields?.isQuiz?.booleanValue ?? false) == true) {
+                self.quizResultTopConstraint.constant = 5
+                self.quizResultBottomConstraint.constant = 5
+                var correctAnswer = 0
+                self.selectedAnswers.forEach {
+                    if(
+                        $0.document?.fields?.correctAnswer?.stringValue == $0.selectedOptions
+                    ){
+                        correctAnswer += 1
+                    }
+                }
+                var resultText = ""
+                if(totalQuizQuestion == 1){
+                    if(correctAnswer == 1){
+                        resultText = "Correct answer ✅"
+                    }else{
+                        resultText = "Incorrect answer ❌"
+                    }
+                }else {
+                    resultText = "All Done 😀 \(correctAnswer) of \(totalQuizQuestion ?? 0) correct ✅"
+                }
+                self.viewQuizResult.isHidden = false
+                self.lblQuizResult.text = resultText
+            }
+            let delay = (survey?.document?.fields?.isQuiz?.booleanValue ?? false) == true ? 3 : 1
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(delay)) {
                 guard let completion = self.completionBlock else { return }
                 self.runCloseAnimation {
                     completion()
@@ -259,8 +320,8 @@ class BabbleViewController: UIViewController {
         //        }
         
         UIView.animate(withDuration: 0.3) {
-            if self.stackView.arrangedSubviews.count > 2 {
-                self.stackView.arrangedSubviews[2].isHidden = false
+            if self.stackView.arrangedSubviews.count > 3 {
+                self.stackView.arrangedSubviews[3].isHidden = false
             }
             
         } completion: { _ in
@@ -402,13 +463,24 @@ extension BabbleViewController: BabbleSurveyResponseProtocol {
         self.presentNextScreen(checkForNextQuestion: nil,answer: nil, questionElement: nil)
     }
     func singleAndMultiSelectionSubmit(_ selectedOptions:[String]){
-        self.presentNextScreen(checkForNextQuestion: selectedOptions.isEmpty ? "" : selectedOptions[0],answer: selectedOptions.joined(separator: ","), questionElement: questionListResponse[currentScreenIndex])
+        if(!((questionListResponse[currentScreenIndex].document?.fields?.correctAnswer?.stringValue ?? "").isEmpty)){
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                self.presentNextScreen(checkForNextQuestion: selectedOptions.isEmpty ? "" : selectedOptions[0],answer: selectedOptions.joined(separator: ","), questionElement: self.questionListResponse[self.currentScreenIndex])
+            }
+        }else{
+            self.presentNextScreen(checkForNextQuestion: selectedOptions.isEmpty ? "" : selectedOptions[0],answer: selectedOptions.joined(separator: ","), questionElement: questionListResponse[currentScreenIndex])
+        }
     }
     
     fileprivate func presentNextScreen(checkForNextQuestion: String?,answer:String?,questionElement: QuestionListResponseElement?) {
         var hasNextQuestion = true
         if(currentScreenIndex<(questionListResponse.count-1))
         {
+            if(questionElement != nil){
+                var question = questionElement
+                question?.selectedOptions = answer ?? ""
+                self.selectedAnswers.append(question!)
+            }
             if (currentScreenIndex != -1 && checkForNextQuestion != nil && questionListResponse[currentScreenIndex].document?.fields?.nextQuestion != nil && (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!] != nil || questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?["any"] != nil)){
                 if((questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!]?.stringValue ?? "").lowercased() == "end" || (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?["any"]?.stringValue ?? "").lowercased() == "end"){
                     hasNextQuestion = false

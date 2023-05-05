@@ -20,9 +20,10 @@ class BabbleRadioButton: UIButton {
         case checkBox
     }
     
-    init(frame: CGRect, type: BabbleRadioButtonType) {
+    init(frame: CGRect, type: BabbleRadioButtonType,_ isQuizQuestion:Bool?) {
         super.init(frame: frame)
         self.radioButtonType = type
+        self.isQuizQuestion = isQuizQuestion ?? false
         if #available(iOS 11.0, *) {
             self.contentHorizontalAlignment = .leading
         } else {
@@ -32,13 +33,13 @@ class BabbleRadioButton: UIButton {
         self.contentVerticalAlignment = .center
         self.layer.cornerRadius = 5.0
         self.setupButtonStyle()
-
+        
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         self.titleEdgeInsets = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 12)
-
+        
     }
     
     required init?(coder: NSCoder) {
@@ -46,6 +47,7 @@ class BabbleRadioButton: UIButton {
     }
     
     private var radioButtonType: BabbleRadioButtonType = .radioButton
+    private var isQuizQuestion: Bool = false
     
     override var isHighlighted: Bool {
         didSet {
@@ -55,18 +57,19 @@ class BabbleRadioButton: UIButton {
     
     func setupButtonStyle() {
         self.layer.borderWidth = 0
-
+        
         if self.radioButtonType == .radioButton {
+            
             if self.isHighlighted == true {
                 
             } else if self.isSelected == true {
-                self.layer.backgroundColor = kBrandColor.cgColor
-                self.setTitleColor(UIColor.white, for: .normal)
-
+                if(!isQuizQuestion){
+                    self.layer.backgroundColor = kBrandColor.cgColor
+                    self.setTitleColor(UIColor.white, for: .normal)
+                }
             } else {
                 self.layer.backgroundColor = kOptionBackgroundColor.cgColor
                 self.setTitleColor(kPrimaryTitleColor, for: .normal)
-
             }
         }
         else {
@@ -77,14 +80,14 @@ class BabbleRadioButton: UIButton {
             } else if self.isSelected == true {
                 self.layer.backgroundColor = kBrandColor.cgColor
                 self.setTitleColor(kOptionBackgroundColorHightlighted, for: .normal)
-
+                
             } else {
                 self.layer.backgroundColor = kOptionBackgroundColor.cgColor
                 self.setTitleColor(kPrimaryTitleColor, for: .normal)
             }
         }
     }
-
+    
     override var isSelected: Bool {
         didSet {
             self.setupButtonStyle()
