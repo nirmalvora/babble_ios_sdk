@@ -1,5 +1,5 @@
 PODS:
-  - BabbleiOS (0.0.18)
+  - BabbleiOS (0.0.19)
 
 DEPENDENCIES:
   - BabbleiOS (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BabbleiOS: b565554dfc3bbceeaa4aaff1b9e682d7db424597
+  BabbleiOS: 705ec296d6f23b54ea661800b6ab9e22d22524bf
 
 PODFILE CHECKSUM: f9a4e904f7a2e1883dc49f57897140c55ffacba8
 
