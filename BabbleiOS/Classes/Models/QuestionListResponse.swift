@@ -27,6 +27,7 @@ struct QuestionFields: Codable {
     let questionTypeID: IntegerValue?
     let inactive: BooleanValue?
     let nextQuestion: NextQuestion?
+    let skipLogicData: SkipLogicData?
 
     enum CodingKeys: String, CodingKey {
         case questionText = "question_text"
@@ -43,6 +44,7 @@ struct QuestionFields: Codable {
         case questionTypeID = "question_type_id"
         case nextQuestion = "next_question"
         case correctAnswer = "correct_answer"
+        case skipLogicData = "skip_logic_data"
         case inactive
     }
 }
@@ -79,5 +81,35 @@ struct IntegerValue: Codable {
     let integerValue: String?
 }
 
+// MARK: - SkipLogicData
+struct SkipLogicData: Codable {
+    let arrayValue: SkipLogicArrayValue?
+}
+
+// MARK: - ArrayValue
+struct SkipLogicArrayValue: Codable {
+    let values: [SkipLogicValue]?
+}
+
+// MARK: - Value
+struct SkipLogicValue: Codable {
+    let mapValue: SkipLogicMapValue?
+}
+
+// MARK: - MapValue
+struct SkipLogicMapValue: Codable {
+    let fields: SkipLogicFields?
+}
+
+// MARK: - Fields
+struct SkipLogicFields: Codable {
+    let nextQuestion, respVal, referralText: StringValue?
+
+    enum CodingKeys: String, CodingKey {
+        case nextQuestion = "next_question"
+        case respVal = "resp_val"
+        case referralText = "referral_text"
+    }
+}
 
 typealias QuestionListResponse = [QuestionListResponseElement]

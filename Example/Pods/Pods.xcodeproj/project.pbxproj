@@ -7,55 +7,55 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		090F05DA711FFB67E4902807CA688649 /* BabbleiOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C14E538E76266FE26C674FA83572388 /* BabbleiOS-dummy.m */; };
-		0B45D7AEF6641BC12B2761CB44E87DD2 /* BabbleAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16E464144CCE3B6DD97FB7E1053B45 /* BabbleAPIController.swift */; };
-		12DCDEABB05003C651ECCC7E14B7240A /* QuestionListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5766477CE3DBC76CBFF725DA9466D370 /* QuestionListResponse.swift */; };
+		090F05DA711FFB67E4902807CA688649 /* BabbleiOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 48A5452366158AC25D341A3E1995846E /* BabbleiOS-dummy.m */; };
+		0B45D7AEF6641BC12B2761CB44E87DD2 /* BabbleAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489A38DF99AF5E1EAF1AA0AA93D184D7 /* BabbleAPIController.swift */; };
+		12DCDEABB05003C651ECCC7E14B7240A /* QuestionListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC52B4836B91952CD8E8D95CFBAAAF0F /* QuestionListResponse.swift */; };
 		21113ADE31BF3C18BBC8A7BB32E5D921 /* BabbleiOS-SurveySDK in Resources */ = {isa = PBXBuildFile; fileRef = 6DF82617BE7DFE155F27437EAC9A4704 /* BabbleiOS-SurveySDK */; };
-		231AAD967666ED932A54A34787D2EBED /* SurveyListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE04F88B040766B83C737DB096828D03 /* SurveyListResponse.swift */; };
-		2345F3A296143BEA9F778DFF37ED836D /* BackendEventsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AC3D85637E2B567098051CAB9DF6BA /* BackendEventsResponse.swift */; };
+		231AAD967666ED932A54A34787D2EBED /* SurveyListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6AD0C110788C5AF7801B6ED7134F56 /* SurveyListResponse.swift */; };
+		2345F3A296143BEA9F778DFF37ED836D /* BackendEventsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609F185375042EA93B97321190A7CF34 /* BackendEventsResponse.swift */; };
 		2586D2FF20672F6316B76FAE8F036404 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		265A1A31E9BE3830C2F4A60027EC231D /* BabbleProjectDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E3360812359C88892D54605162305 /* BabbleProjectDetailsController.swift */; };
-		26835302EA497086C1A8C8E571804158 /* URLRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABC188EDFEBC74FFDD2A42277CAB99E /* URLRequestManager.swift */; };
-		2E8EB482EA21A1B5EB2C21F26B18B4BF /* AddResponseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063E0B0512E09DF8699A70E5FC9B7E2D /* AddResponseRequest.swift */; };
-		350C3F9AF5C0FBA9C01A190AAC155AB3 /* BabbleSurveyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033D77510CB574D2B7A963C82400BC6C /* BabbleSurveyController.swift */; };
-		36A9E6799298A930C917E4459F0DEC31 /* BabbleNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB88DF19C8EDCADC884FC62C2C0BCD /* BabbleNumberCollectionViewCell.swift */; };
-		42434BC939FEB0583721F8DB43106B5F /* EligibleSurveyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAECEE7FBAA478DDD6F32DE788C16EB /* EligibleSurveyResponse.swift */; };
-		4FED8F082F2BA1629E6D93DFF914FF72 /* BabbleNumericView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A59BD6F1281E33E48A972DCC32A9C /* BabbleNumericView.swift */; };
-		58CCF10C612CEF5D238DBF37F1F1661E /* BabbleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2225F4708C61AF47DB13397487379C41 /* BabbleTextView.swift */; };
-		5B6CABB63D6A97BC5554DAA74167854B /* BabbleViewLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851B04F803177317FB477677493A91E8 /* BabbleViewLoading.swift */; };
-		6605B1A89AAE0313BCAF71FF6A084B46 /* BabbleWelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E52CFF4B45D1E04DFFD283C1E45914B /* BabbleWelcomeView.xib */; };
-		68BF3AD090F685F9DC6397DDBA8BB299 /* BabbleSdk.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3397991EC1274824B3F862E9F36A2F8 /* BabbleSdk.swift */; };
+		265A1A31E9BE3830C2F4A60027EC231D /* BabbleProjectDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B7E59DF7BF13DEA328837F602A4BBB /* BabbleProjectDetailsController.swift */; };
+		26835302EA497086C1A8C8E571804158 /* URLRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99561DACA3BEA2CB048E94F384DB0E6 /* URLRequestManager.swift */; };
+		2E8EB482EA21A1B5EB2C21F26B18B4BF /* AddResponseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0DA9801479BDF91C680537DDEC2353 /* AddResponseRequest.swift */; };
+		350C3F9AF5C0FBA9C01A190AAC155AB3 /* BabbleSurveyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0930059940E5EE1EE299139721A5D483 /* BabbleSurveyController.swift */; };
+		36A9E6799298A930C917E4459F0DEC31 /* BabbleNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06846B7BCD2A158EA342A60C962A0FF3 /* BabbleNumberCollectionViewCell.swift */; };
+		42434BC939FEB0583721F8DB43106B5F /* EligibleSurveyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9640BA4926FB092C332621E431D8C44 /* EligibleSurveyResponse.swift */; };
+		4FED8F082F2BA1629E6D93DFF914FF72 /* BabbleNumericView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E887990C2737B06B541B159E6DDA4 /* BabbleNumericView.swift */; };
+		58CCF10C612CEF5D238DBF37F1F1661E /* BabbleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ECAB26A5B0A782BD0001EE393C496E /* BabbleTextView.swift */; };
+		5B6CABB63D6A97BC5554DAA74167854B /* BabbleViewLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74CA475E2722C2DD64B224E7DA0E568 /* BabbleViewLoading.swift */; };
+		6605B1A89AAE0313BCAF71FF6A084B46 /* BabbleWelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46C950F0B63AC5168D4BF4BEA0A5C0CB /* BabbleWelcomeView.xib */; };
+		68BF3AD090F685F9DC6397DDBA8BB299 /* BabbleSdk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCDEAD897439517DD90605F3DCBB8FA /* BabbleSdk.swift */; };
 		70FA6BE5A8065ED4667BB0CC06A44684 /* Pods-babbleios_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5260478FCD64A964CC1346CDE1A755 /* Pods-babbleios_Example-dummy.m */; };
-		754E4B8530F54DBF9150397F3493386B /* CohortResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5555313019FBC3FF4936D54321D42B /* CohortResponse.swift */; };
-		78B7936DBF1E3A622A6994A750A8EB43 /* BabbleDraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5E252E27CA3C7E56CCF0A678F14942 /* BabbleDraggableView.swift */; };
-		7A97CA5124DD7D59C363C883EAC09770 /* BabbleiOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B089613D29016ABEC08E576566139817 /* BabbleiOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7E20617CDB1A4C5A9958AE90E2971604 /* BabbleLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE158DF8D66A4112EFD79136D2B4EFE7 /* BabbleLog.swift */; };
+		754E4B8530F54DBF9150397F3493386B /* CohortResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F5C9E3F22AC088923CDE22D9DFA4DD /* CohortResponse.swift */; };
+		78B7936DBF1E3A622A6994A750A8EB43 /* BabbleDraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B3BFF837131597CF2276A1D9B21982 /* BabbleDraggableView.swift */; };
+		7A97CA5124DD7D59C363C883EAC09770 /* BabbleiOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C7FB62E6419710CED76E374627BAC4D /* BabbleiOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7E20617CDB1A4C5A9958AE90E2971604 /* BabbleLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB389C42F3FE96FCC8DCC59195BBB95 /* BabbleLog.swift */; };
 		8196733296EA9B9D930A5EC81262502B /* Pods-babbleios_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 680D9A10262F9872CC9D6389DC57958E /* Pods-babbleios_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		849754C55F98012F2AF420044E4FF49C /* BabbleNumericView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0D81B84B677F5588938BC4F41ACC30A /* BabbleNumericView.xib */; };
-		85B76B604531A4BED7856EE963C3A1EB /* BabbleSingleAndMultiSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67A58A818CE8F720C96F9C3316EA6BA7 /* BabbleSingleAndMultiSelectView.xib */; };
-		864E9A6ADFA0188B622FB73053A7DF8E /* BabbleTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8FF4368DB0C0C2BC3B2858EC6BD4631 /* BabbleTextView.xib */; };
-		916D2F78B77EEDA12B8071F984F3DA0C /* BabbleStarsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476F04647CB592C5DECD781D74011589 /* BabbleStarsView.xib */; };
-		97BE07B26C21BD7B7D1F373C116C19A9 /* BabbleStarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F6220781D840AA89E259853B215A4F /* BabbleStarsView.swift */; };
-		99F54E54537155E69A7388E23FFF88FC /* SurveyInstanceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACA087EAAD3517F3515F7C646EE692E /* SurveyInstanceRequest.swift */; };
-		A18173D00E637E439C355930D1051F75 /* BabbleNumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DE4CE33979FF692EDE91786CF36860 /* BabbleNumberButton.swift */; };
-		A3FC935200ADAFC0E25B8CE55DD50EE6 /* BabbleRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18880CDB18C4794E08C246728960579F /* BabbleRadioButton.swift */; };
+		849754C55F98012F2AF420044E4FF49C /* BabbleNumericView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DB3FEEBBF022BB21F3961D552EA46B2 /* BabbleNumericView.xib */; };
+		85B76B604531A4BED7856EE963C3A1EB /* BabbleSingleAndMultiSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB2A9BF8332B2992A5E9A8F0A6CA86A9 /* BabbleSingleAndMultiSelectView.xib */; };
+		864E9A6ADFA0188B622FB73053A7DF8E /* BabbleTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 066EF7DCD4D88B28405F2FCBB2369569 /* BabbleTextView.xib */; };
+		916D2F78B77EEDA12B8071F984F3DA0C /* BabbleStarsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427AD660F0DC8F9324D8A5E15057A774 /* BabbleStarsView.xib */; };
+		97BE07B26C21BD7B7D1F373C116C19A9 /* BabbleStarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C23A9B013A36A97248204AD0BD08C77 /* BabbleStarsView.swift */; };
+		99F54E54537155E69A7388E23FFF88FC /* SurveyInstanceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20423711ECF66F24E50249DF2B0465A8 /* SurveyInstanceRequest.swift */; };
+		A18173D00E637E439C355930D1051F75 /* BabbleNumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F311BC5018317BD24AC81B4480CD61C /* BabbleNumberButton.swift */; };
+		A3FC935200ADAFC0E25B8CE55DD50EE6 /* BabbleRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680081F0DF2014F15DDCB58B3C998F9E /* BabbleRadioButton.swift */; };
 		A4DF2E0D1FB585899112695BE7D73B4B /* Pods-babbleios_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A88068DF136AE98C1FD407495DF034 /* Pods-babbleios_Tests-dummy.m */; };
-		A90C522298F77CB5B7D9A495C4A2FBA1 /* StyleListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5129F7C8D96B388782EA2CCD32B462 /* StyleListResponse.swift */; };
-		AD794476B5AC9733251E5658276789E1 /* BabbleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9703FDCB6298E0FD60EF7F51F8F42270 /* BabbleConstants.swift */; };
+		A90C522298F77CB5B7D9A495C4A2FBA1 /* StyleListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CCCC4AC5809BCBCC4EC2BBEA3BBAD6 /* StyleListResponse.swift */; };
+		AD794476B5AC9733251E5658276789E1 /* BabbleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDFBFDA387EE6762BD8357D5D838675 /* BabbleConstants.swift */; };
 		B3F08C2C35BF0A3944B3955FB400ACF6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		C545A1E853046107C87847965409FB5B /* EligibleSurveyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB5844E08EF276D70A040657C0307CC /* EligibleSurveyRequest.swift */; };
-		C5761C48359D9C87C322BB4B4CE32574 /* BabbleNumberCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EF3269339638B5B314F0B731A127B3F /* BabbleNumberCollectionViewCell.xib */; };
-		D3814657E8B901D0D0ECCEFB5954C28F /* BabbleRoundedCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAD6AE9060D44D123A98A679E1D08D3 /* BabbleRoundedCornerView.swift */; };
-		D575796A7DF60B6B7B126BB3BB38FC97 /* BabbleWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD128F658A076B2F11A926A9B8405B0 /* BabbleWelcomeView.swift */; };
-		D80D10E136CDFA0B89E71A6C5C177EF3 /* BabbleBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A255D811DC253A7C71F5283EE9B23E2E /* BabbleBundle.swift */; };
-		DD0E0E52A7D288461E4F3B42B4D02121 /* BabbleSurveyResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0734BF50346EE66C07156AC5CA646AB7 /* BabbleSurveyResponseProtocol.swift */; };
-		DFFA6D3AD43E82EDECA7D97B1FF7794B /* BabbleSingleAndMultiSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D92E1C22F11FDFD51997CFF0EE061A /* BabbleSingleAndMultiSelectView.swift */; };
-		E7797247DD405176EEC6A44791451CFC /* BabbleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3204A230400F74705AACEE1ADF3840 /* BabbleViewController.swift */; };
+		C545A1E853046107C87847965409FB5B /* EligibleSurveyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A74D304F7B13C1C2D3E72FA8F051F /* EligibleSurveyRequest.swift */; };
+		C5761C48359D9C87C322BB4B4CE32574 /* BabbleNumberCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58B8B022F474DD887D03DAAB704FE67B /* BabbleNumberCollectionViewCell.xib */; };
+		D3814657E8B901D0D0ECCEFB5954C28F /* BabbleRoundedCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F34134587C899417A56DA91F5C8CC6 /* BabbleRoundedCornerView.swift */; };
+		D575796A7DF60B6B7B126BB3BB38FC97 /* BabbleWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7750BF9AC2ADBDFA1DE0BF3F8E120931 /* BabbleWelcomeView.swift */; };
+		D80D10E136CDFA0B89E71A6C5C177EF3 /* BabbleBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15BEDE685E0EB30553488EB865D342D /* BabbleBundle.swift */; };
+		DD0E0E52A7D288461E4F3B42B4D02121 /* BabbleSurveyResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA0AF7A965B2FFBE0F583ACD1905179 /* BabbleSurveyResponseProtocol.swift */; };
+		DFFA6D3AD43E82EDECA7D97B1FF7794B /* BabbleSingleAndMultiSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9452B0BC834D2D9D7F2FC7B00487B9 /* BabbleSingleAndMultiSelectView.swift */; };
+		E7797247DD405176EEC6A44791451CFC /* BabbleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063C591C80CC2BBAC4CB4E81BEF4851B /* BabbleViewController.swift */; };
 		F46CF12551B201121FFD1BE70BA2F274 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		F5835D0C4F9815BC6C8D61D57355F967 /* TriggerListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70BBDF5E62703A3CCE3C2AD64632C08 /* TriggerListResponse.swift */; };
-		F6931160200C81A694E1F0D901ACF45D /* BabbleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4654DBEBEE8CFE0F2F9324D9C46CA83 /* BabbleViewController.xib */; };
+		F5835D0C4F9815BC6C8D61D57355F967 /* TriggerListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1F5EC0996C9D9C96BC8EFC8F7FDCC /* TriggerListResponse.swift */; };
+		F6931160200C81A694E1F0D901ACF45D /* BabbleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF795A78C16F8E093E3E9CED0C398415 /* BabbleViewController.xib */; };
 		F7B73DF7CF9D61A4A8D95A57C8E6ECBA /* Pods-babbleios_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EDBAB03177A5E168DF337D69DD1B64E /* Pods-babbleios_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F9C140220F344177E9AEB973A6D94994 /* BabbleAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00BDEF48C4E4CB9745DCD0C3733C4695 /* BabbleAsset.xcassets */; };
+		F9C140220F344177E9AEB973A6D94994 /* BabbleAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5D9B58B3816578E95CE801BCFA94E1F /* BabbleAsset.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +66,7 @@
 			remoteGlobalIDString = 8D65E8B3894EDC146BC52F5620AFA46B;
 			remoteInfo = BabbleiOS;
 		};
-		8236DDF13A6CD3E21DA73AC059FCF69E /* PBXContainerItemProxy */ = {
+		A216BB584FF89ED88D138BEF8FA9990F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -83,78 +83,79 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00BDEF48C4E4CB9745DCD0C3733C4695 /* BabbleAsset.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = BabbleAsset.xcassets; path = BabbleiOS/Resources/BabbleAsset.xcassets; sourceTree = "<group>"; };
-		033D77510CB574D2B7A963C82400BC6C /* BabbleSurveyController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BabbleSurveyController.swift; path = BabbleiOS/Classes/BabbleSurveyController.swift; sourceTree = "<group>"; };
-		063E0B0512E09DF8699A70E5FC9B7E2D /* AddResponseRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddResponseRequest.swift; sourceTree = "<group>"; };
+		044E887990C2737B06B541B159E6DDA4 /* BabbleNumericView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleNumericView.swift; sourceTree = "<group>"; };
+		063C591C80CC2BBAC4CB4E81BEF4851B /* BabbleViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleViewController.swift; sourceTree = "<group>"; };
 		066701F14D86702C477C8A63D4258BF3 /* Pods-babbleios_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-babbleios_Example.release.xcconfig"; sourceTree = "<group>"; };
-		0734BF50346EE66C07156AC5CA646AB7 /* BabbleSurveyResponseProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleSurveyResponseProtocol.swift; sourceTree = "<group>"; };
-		09D709685365AF213EC964ED5F386060 /* BabbleiOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BabbleiOS.modulemap; sourceTree = "<group>"; };
-		0A16E464144CCE3B6DD97FB7E1053B45 /* BabbleAPIController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleAPIController.swift; sourceTree = "<group>"; };
-		0FB38A872ABC02EA873710F09F52351E /* BabbleiOS.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = BabbleiOS.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		18880CDB18C4794E08C246728960579F /* BabbleRadioButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleRadioButton.swift; sourceTree = "<group>"; };
-		1BD128F658A076B2F11A926A9B8405B0 /* BabbleWelcomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleWelcomeView.swift; sourceTree = "<group>"; };
+		066EF7DCD4D88B28405F2FCBB2369569 /* BabbleTextView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = BabbleTextView.xib; path = BabbleiOS/Resources/BabbleTextView.xib; sourceTree = "<group>"; };
+		06846B7BCD2A158EA342A60C962A0FF3 /* BabbleNumberCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleNumberCollectionViewCell.swift; sourceTree = "<group>"; };
+		0930059940E5EE1EE299139721A5D483 /* BabbleSurveyController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BabbleSurveyController.swift; path = BabbleiOS/Classes/BabbleSurveyController.swift; sourceTree = "<group>"; };
+		18E1F5EC0996C9D9C96BC8EFC8F7FDCC /* TriggerListResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TriggerListResponse.swift; sourceTree = "<group>"; };
+		19729305F69BB2FF843C6453EC0ACC41 /* BabbleiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BabbleiOS.debug.xcconfig; sourceTree = "<group>"; };
+		1C23A9B013A36A97248204AD0BD08C77 /* BabbleStarsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleStarsView.swift; sourceTree = "<group>"; };
+		1DB3FEEBBF022BB21F3961D552EA46B2 /* BabbleNumericView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = BabbleNumericView.xib; path = BabbleiOS/Resources/BabbleNumericView.xib; sourceTree = "<group>"; };
 		1FF3A7EE3B752BDB7394630256F8F201 /* Pods-babbleios_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-babbleios_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		2225F4708C61AF47DB13397487379C41 /* BabbleTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleTextView.swift; sourceTree = "<group>"; };
+		20423711ECF66F24E50249DF2B0465A8 /* SurveyInstanceRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SurveyInstanceRequest.swift; sourceTree = "<group>"; };
+		2BA0AF7A965B2FFBE0F583ACD1905179 /* BabbleSurveyResponseProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleSurveyResponseProtocol.swift; sourceTree = "<group>"; };
 		333C269542731DB0BB5A590ED489CC57 /* Pods-babbleios_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-babbleios_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		3386990E69B8BE1DD2D5FCE4408777CA /* Pods-babbleios_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-babbleios_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		39E85EF2DFD3D71E58CADE2B5A495106 /* BabbleiOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BabbleiOS-prefix.pch"; sourceTree = "<group>"; };
-		3F3D970F66DBF075137C4083DC2FB7BC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		4021CB46EF93D72592AC9AC7E64B9848 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		3426E382980BB6676C49487D664FC2AB /* BabbleiOS.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = BabbleiOS.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		3F0DA9801479BDF91C680537DDEC2353 /* AddResponseRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddResponseRequest.swift; sourceTree = "<group>"; };
+		416B5B8453B2600C81DBE9D95E6657C3 /* BabbleiOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BabbleiOS.modulemap; sourceTree = "<group>"; };
+		427AD660F0DC8F9324D8A5E15057A774 /* BabbleStarsView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = BabbleStarsView.xib; path = BabbleiOS/Resources/BabbleStarsView.xib; sourceTree = "<group>"; };
 		44FC82A05A1560D5DB395473D6D8A69E /* Pods-babbleios_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-babbleios_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		452E49F9F1A22FCA34D13501264D5D9F /* Pods-babbleios_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-babbleios_Example"; path = Pods_babbleios_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		476F04647CB592C5DECD781D74011589 /* BabbleStarsView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = BabbleStarsView.xib; path = BabbleiOS/Resources/BabbleStarsView.xib; sourceTree = "<group>"; };
-		4A9E3360812359C88892D54605162305 /* BabbleProjectDetailsController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BabbleProjectDetailsController.swift; path = BabbleiOS/Classes/BabbleProjectDetailsController.swift; sourceTree = "<group>"; };
-		4C14E538E76266FE26C674FA83572388 /* BabbleiOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BabbleiOS-dummy.m"; sourceTree = "<group>"; };
+		46C950F0B63AC5168D4BF4BEA0A5C0CB /* BabbleWelcomeView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = BabbleWelcomeView.xib; path = BabbleiOS/Resources/BabbleWelcomeView.xib; sourceTree = "<group>"; };
+		489A38DF99AF5E1EAF1AA0AA93D184D7 /* BabbleAPIController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleAPIController.swift; sourceTree = "<group>"; };
+		48A5452366158AC25D341A3E1995846E /* BabbleiOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BabbleiOS-dummy.m"; sourceTree = "<group>"; };
+		4CCDEAD897439517DD90605F3DCBB8FA /* BabbleSdk.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BabbleSdk.swift; path = BabbleiOS/Classes/BabbleSdk.swift; sourceTree = "<group>"; };
+		4F311BC5018317BD24AC81B4480CD61C /* BabbleNumberButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleNumberButton.swift; sourceTree = "<group>"; };
 		4FE3AC3D60C9F5BFED5046A9D5665F55 /* Pods-babbleios_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-babbleios_Tests-Info.plist"; sourceTree = "<group>"; };
-		5766477CE3DBC76CBFF725DA9466D370 /* QuestionListResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = QuestionListResponse.swift; sourceTree = "<group>"; };
-		5EEB88DF19C8EDCADC884FC62C2C0BCD /* BabbleNumberCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleNumberCollectionViewCell.swift; sourceTree = "<group>"; };
-		5EF3269339638B5B314F0B731A127B3F /* BabbleNumberCollectionViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = BabbleNumberCollectionViewCell.xib; path = BabbleiOS/Resources/BabbleNumberCollectionViewCell.xib; sourceTree = "<group>"; };
-		67A58A818CE8F720C96F9C3316EA6BA7 /* BabbleSingleAndMultiSelectView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = BabbleSingleAndMultiSelectView.xib; path = BabbleiOS/Resources/BabbleSingleAndMultiSelectView.xib; sourceTree = "<group>"; };
+		52B7E59DF7BF13DEA328837F602A4BBB /* BabbleProjectDetailsController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BabbleProjectDetailsController.swift; path = BabbleiOS/Classes/BabbleProjectDetailsController.swift; sourceTree = "<group>"; };
+		54CCCC4AC5809BCBCC4EC2BBEA3BBAD6 /* StyleListResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StyleListResponse.swift; sourceTree = "<group>"; };
+		58B8B022F474DD887D03DAAB704FE67B /* BabbleNumberCollectionViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = BabbleNumberCollectionViewCell.xib; path = BabbleiOS/Resources/BabbleNumberCollectionViewCell.xib; sourceTree = "<group>"; };
+		58ECAB26A5B0A782BD0001EE393C496E /* BabbleTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleTextView.swift; sourceTree = "<group>"; };
+		609F185375042EA93B97321190A7CF34 /* BackendEventsResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BackendEventsResponse.swift; sourceTree = "<group>"; };
+		680081F0DF2014F15DDCB58B3C998F9E /* BabbleRadioButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleRadioButton.swift; sourceTree = "<group>"; };
 		680D9A10262F9872CC9D6389DC57958E /* Pods-babbleios_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-babbleios_Example-umbrella.h"; sourceTree = "<group>"; };
-		6A5129F7C8D96B388782EA2CCD32B462 /* StyleListResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StyleListResponse.swift; sourceTree = "<group>"; };
 		6DF82617BE7DFE155F27437EAC9A4704 /* BabbleiOS-SurveySDK */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "BabbleiOS-SurveySDK"; path = SurveySDK.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E52CFF4B45D1E04DFFD283C1E45914B /* BabbleWelcomeView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = BabbleWelcomeView.xib; path = BabbleiOS/Resources/BabbleWelcomeView.xib; sourceTree = "<group>"; };
 		6EDBAB03177A5E168DF337D69DD1B64E /* Pods-babbleios_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-babbleios_Tests-umbrella.h"; sourceTree = "<group>"; };
-		6F1B1DE26230188E18E406DAB8B52387 /* BabbleiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BabbleiOS.release.xcconfig; sourceTree = "<group>"; };
+		6F6AD0C110788C5AF7801B6ED7134F56 /* SurveyListResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SurveyListResponse.swift; sourceTree = "<group>"; };
 		708E5D7E30EA9B1ECCBAFF50AA83642A /* Pods-babbleios_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-babbleios_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		722A0FA8943E934E8FB88327A383BCE9 /* ResourceBundle-SurveySDK-BabbleiOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-SurveySDK-BabbleiOS-Info.plist"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		74202D07965B03186226C95AF0470DEC /* Pods-babbleios_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-babbleios_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		7D5E252E27CA3C7E56CCF0A678F14942 /* BabbleDraggableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleDraggableView.swift; sourceTree = "<group>"; };
-		7DAECEE7FBAA478DDD6F32DE788C16EB /* EligibleSurveyResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EligibleSurveyResponse.swift; sourceTree = "<group>"; };
+		7750BF9AC2ADBDFA1DE0BF3F8E120931 /* BabbleWelcomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleWelcomeView.swift; sourceTree = "<group>"; };
+		7C7FB62E6419710CED76E374627BAC4D /* BabbleiOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BabbleiOS-umbrella.h"; sourceTree = "<group>"; };
 		835B909AA8C102ACC1F4BE6DB522A2FF /* Pods-babbleios_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-babbleios_Example-Info.plist"; sourceTree = "<group>"; };
-		851B04F803177317FB477677493A91E8 /* BabbleViewLoading.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleViewLoading.swift; sourceTree = "<group>"; };
+		8367FF1A31A9281465E36E92C4CC2242 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		89F34134587C899417A56DA91F5C8CC6 /* BabbleRoundedCornerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleRoundedCornerView.swift; sourceTree = "<group>"; };
 		8FF70333692B2048975EFF7EEC79560A /* Pods-babbleios_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-babbleios_Tests"; path = Pods_babbleios_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9703FDCB6298E0FD60EF7F51F8F42270 /* BabbleConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleConstants.swift; sourceTree = "<group>"; };
-		9A3204A230400F74705AACEE1ADF3840 /* BabbleViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleViewController.swift; sourceTree = "<group>"; };
-		9AAD6AE9060D44D123A98A679E1D08D3 /* BabbleRoundedCornerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleRoundedCornerView.swift; sourceTree = "<group>"; };
+		90B3BFF837131597CF2276A1D9B21982 /* BabbleDraggableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleDraggableView.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A0AC3D85637E2B567098051CAB9DF6BA /* BackendEventsResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BackendEventsResponse.swift; sourceTree = "<group>"; };
+		9FC6C74280E823141450602E45C87E94 /* ResourceBundle-SurveySDK-BabbleiOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-SurveySDK-BabbleiOS-Info.plist"; sourceTree = "<group>"; };
 		A0DCEB40A1A201BAC89866E91A009293 /* Pods-babbleios_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-babbleios_Example.modulemap"; sourceTree = "<group>"; };
-		A255D811DC253A7C71F5283EE9B23E2E /* BabbleBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleBundle.swift; sourceTree = "<group>"; };
-		AE04F88B040766B83C737DB096828D03 /* SurveyListResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SurveyListResponse.swift; sourceTree = "<group>"; };
-		AE5A59BD6F1281E33E48A972DCC32A9C /* BabbleNumericView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleNumericView.swift; sourceTree = "<group>"; };
-		B089613D29016ABEC08E576566139817 /* BabbleiOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BabbleiOS-umbrella.h"; sourceTree = "<group>"; };
-		B70BBDF5E62703A3CCE3C2AD64632C08 /* TriggerListResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TriggerListResponse.swift; sourceTree = "<group>"; };
-		B8FF4368DB0C0C2BC3B2858EC6BD4631 /* BabbleTextView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = BabbleTextView.xib; path = BabbleiOS/Resources/BabbleTextView.xib; sourceTree = "<group>"; };
-		BF5555313019FBC3FF4936D54321D42B /* CohortResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CohortResponse.swift; sourceTree = "<group>"; };
-		C4654DBEBEE8CFE0F2F9324D9C46CA83 /* BabbleViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = BabbleViewController.xib; path = BabbleiOS/Resources/BabbleViewController.xib; sourceTree = "<group>"; };
-		CE158DF8D66A4112EFD79136D2B4EFE7 /* BabbleLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleLog.swift; sourceTree = "<group>"; };
-		D0D81B84B677F5588938BC4F41ACC30A /* BabbleNumericView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = BabbleNumericView.xib; path = BabbleiOS/Resources/BabbleNumericView.xib; sourceTree = "<group>"; };
+		B50A74D304F7B13C1C2D3E72FA8F051F /* EligibleSurveyRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EligibleSurveyRequest.swift; sourceTree = "<group>"; };
+		B6825F53BE504907E7BFECEA7B5D78A7 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		B9640BA4926FB092C332621E431D8C44 /* EligibleSurveyResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EligibleSurveyResponse.swift; sourceTree = "<group>"; };
+		BB2A9BF8332B2992A5E9A8F0A6CA86A9 /* BabbleSingleAndMultiSelectView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = BabbleSingleAndMultiSelectView.xib; path = BabbleiOS/Resources/BabbleSingleAndMultiSelectView.xib; sourceTree = "<group>"; };
+		BC1AB0913F82A7AF30E6AB156B864E4D /* BabbleiOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BabbleiOS-prefix.pch"; sourceTree = "<group>"; };
+		CBDFBFDA387EE6762BD8357D5D838675 /* BabbleConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleConstants.swift; sourceTree = "<group>"; };
+		D15BEDE685E0EB30553488EB865D342D /* BabbleBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleBundle.swift; sourceTree = "<group>"; };
 		D245B68E8EB26B6298D0FF41990C6FE1 /* Pods-babbleios_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-babbleios_Example-frameworks.sh"; sourceTree = "<group>"; };
-		D3D92E1C22F11FDFD51997CFF0EE061A /* BabbleSingleAndMultiSelectView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleSingleAndMultiSelectView.swift; sourceTree = "<group>"; };
-		D3DE4CE33979FF692EDE91786CF36860 /* BabbleNumberButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleNumberButton.swift; sourceTree = "<group>"; };
-		DACA087EAAD3517F3515F7C646EE692E /* SurveyInstanceRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SurveyInstanceRequest.swift; sourceTree = "<group>"; };
+		D5D9B58B3816578E95CE801BCFA94E1F /* BabbleAsset.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = BabbleAsset.xcassets; path = BabbleiOS/Resources/BabbleAsset.xcassets; sourceTree = "<group>"; };
+		D608FFF1AAD79EC8212B235336E9BE21 /* BabbleiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BabbleiOS.release.xcconfig; sourceTree = "<group>"; };
 		DAE53498104F8E4E6A702FAE17B91935 /* Pods-babbleios_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-babbleios_Tests.modulemap"; sourceTree = "<group>"; };
+		DB9452B0BC834D2D9D7F2FC7B00487B9 /* BabbleSingleAndMultiSelectView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleSingleAndMultiSelectView.swift; sourceTree = "<group>"; };
+		DC52B4836B91952CD8E8D95CFBAAAF0F /* QuestionListResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = QuestionListResponse.swift; sourceTree = "<group>"; };
 		DD5260478FCD64A964CC1346CDE1A755 /* Pods-babbleios_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-babbleios_Example-dummy.m"; sourceTree = "<group>"; };
-		DEB5844E08EF276D70A040657C0307CC /* EligibleSurveyRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EligibleSurveyRequest.swift; sourceTree = "<group>"; };
-		E1F6220781D840AA89E259853B215A4F /* BabbleStarsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleStarsView.swift; sourceTree = "<group>"; };
-		E84AA9DE0AFAB1397E3A8EFBA4BBF4C5 /* BabbleiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BabbleiOS.debug.xcconfig; sourceTree = "<group>"; };
-		EABC188EDFEBC74FFDD2A42277CAB99E /* URLRequestManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = URLRequestManager.swift; sourceTree = "<group>"; };
+		DF795A78C16F8E093E3E9CED0C398415 /* BabbleViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = BabbleViewController.xib; path = BabbleiOS/Resources/BabbleViewController.xib; sourceTree = "<group>"; };
+		E5DF0AA8FC1F8933993CE9C697B9CC08 /* BabbleiOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "BabbleiOS-Info.plist"; sourceTree = "<group>"; };
 		ECCC16B79E81F5B28050D7044B50D01E /* Pods-babbleios_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-babbleios_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		F3397991EC1274824B3F862E9F36A2F8 /* BabbleSdk.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BabbleSdk.swift; path = BabbleiOS/Classes/BabbleSdk.swift; sourceTree = "<group>"; };
+		F1F5C9E3F22AC088923CDE22D9DFA4DD /* CohortResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CohortResponse.swift; sourceTree = "<group>"; };
 		F3A88068DF136AE98C1FD407495DF034 /* Pods-babbleios_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-babbleios_Tests-dummy.m"; sourceTree = "<group>"; };
+		F74CA475E2722C2DD64B224E7DA0E568 /* BabbleViewLoading.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleViewLoading.swift; sourceTree = "<group>"; };
 		F9529C67BB767A3F65752000DD93449B /* BabbleiOS */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BabbleiOS; path = BabbleiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F99561DACA3BEA2CB048E94F384DB0E6 /* URLRequestManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = URLRequestManager.swift; sourceTree = "<group>"; };
+		FDB389C42F3FE96FCC8DCC59195BBB95 /* BabbleLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BabbleLog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,23 +210,50 @@
 			path = "Target Support Files/Pods-babbleios_Example";
 			sourceTree = "<group>";
 		};
-		0B0A2180C0479B2143AA7BE6FA48A714 /* SingleAndMultiSelection */ = {
+		08BE59CBD960F7CB9200FD2AEF3848A8 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				D3D92E1C22F11FDFD51997CFF0EE061A /* BabbleSingleAndMultiSelectView.swift */,
+				D15BEDE685E0EB30553488EB865D342D /* BabbleBundle.swift */,
+				CBDFBFDA387EE6762BD8357D5D838675 /* BabbleConstants.swift */,
+				90B3BFF837131597CF2276A1D9B21982 /* BabbleDraggableView.swift */,
+				FDB389C42F3FE96FCC8DCC59195BBB95 /* BabbleLog.swift */,
+				680081F0DF2014F15DDCB58B3C998F9E /* BabbleRadioButton.swift */,
+				89F34134587C899417A56DA91F5C8CC6 /* BabbleRoundedCornerView.swift */,
+				2BA0AF7A965B2FFBE0F583ACD1905179 /* BabbleSurveyResponseProtocol.swift */,
+				F74CA475E2722C2DD64B224E7DA0E568 /* BabbleViewLoading.swift */,
+				323B66806DBFB30BB37B0BDDE0E3EE5A /* Networking */,
+			);
+			name = Utils;
+			path = BabbleiOS/Classes/Utils;
+			sourceTree = "<group>";
+		};
+		0FCE37309FD6E2ACBD35B308B49C722D /* SingleAndMultiSelection */ = {
+			isa = PBXGroup;
+			children = (
+				DB9452B0BC834D2D9D7F2FC7B00487B9 /* BabbleSingleAndMultiSelectView.swift */,
 			);
 			name = SingleAndMultiSelection;
 			path = SingleAndMultiSelection;
 			sourceTree = "<group>";
 		};
-		29BB3A8F51342D89D1758F067071E963 /* Pod */ = {
+		1CE8D8C7667D3BADBD6E8C43D8BF8954 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				0FB38A872ABC02EA873710F09F52351E /* BabbleiOS.podspec */,
-				3F3D970F66DBF075137C4083DC2FB7BC /* LICENSE */,
-				4021CB46EF93D72592AC9AC7E64B9848 /* README.md */,
+				3426E382980BB6676C49487D664FC2AB /* BabbleiOS.podspec */,
+				B6825F53BE504907E7BFECEA7B5D78A7 /* LICENSE */,
+				8367FF1A31A9281465E36E92C4CC2242 /* README.md */,
 			);
 			name = Pod;
+			sourceTree = "<group>";
+		};
+		323B66806DBFB30BB37B0BDDE0E3EE5A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				489A38DF99AF5E1EAF1AA0AA93D184D7 /* BabbleAPIController.swift */,
+				F99561DACA3BEA2CB048E94F384DB0E6 /* URLRequestManager.swift */,
+			);
+			name = Networking;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
@@ -234,25 +262,6 @@
 				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
 			);
 			name = iOS;
-			sourceTree = "<group>";
-		};
-		5B904B39DB7EF7E0F4F7B319BE8A6610 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				0A16E464144CCE3B6DD97FB7E1053B45 /* BabbleAPIController.swift */,
-				EABC188EDFEBC74FFDD2A42277CAB99E /* URLRequestManager.swift */,
-			);
-			name = Networking;
-			path = Networking;
-			sourceTree = "<group>";
-		};
-		6202CF8D205DBEE37A83EA81549DBE69 /* BabbleTextView */ = {
-			isa = PBXGroup;
-			children = (
-				2225F4708C61AF47DB13397487379C41 /* BabbleTextView.swift */,
-			);
-			name = BabbleTextView;
-			path = BabbleTextView;
 			sourceTree = "<group>";
 		};
 		621ED4D2EB85AD52B9B74A70D0FBBA94 /* Targets Support Files */ = {
@@ -264,6 +273,24 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		639FFE9F18883CEE365D3E2F4326210B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3F0DA9801479BDF91C680537DDEC2353 /* AddResponseRequest.swift */,
+				609F185375042EA93B97321190A7CF34 /* BackendEventsResponse.swift */,
+				F1F5C9E3F22AC088923CDE22D9DFA4DD /* CohortResponse.swift */,
+				B50A74D304F7B13C1C2D3E72FA8F051F /* EligibleSurveyRequest.swift */,
+				B9640BA4926FB092C332621E431D8C44 /* EligibleSurveyResponse.swift */,
+				DC52B4836B91952CD8E8D95CFBAAAF0F /* QuestionListResponse.swift */,
+				54CCCC4AC5809BCBCC4EC2BBEA3BBAD6 /* StyleListResponse.swift */,
+				20423711ECF66F24E50249DF2B0465A8 /* SurveyInstanceRequest.swift */,
+				6F6AD0C110788C5AF7801B6ED7134F56 /* SurveyListResponse.swift */,
+				18E1F5EC0996C9D9C96BC8EFC8F7FDCC /* TriggerListResponse.swift */,
+			);
+			name = Models;
+			path = BabbleiOS/Classes/Models;
+			sourceTree = "<group>";
+		};
 		66638D01254F058508786914E8DA3D3D /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +300,22 @@
 				8FF70333692B2048975EFF7EEC79560A /* Pods-babbleios_Tests */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		6C9E713A5F65E5B5C60A960FB0670B94 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				416B5B8453B2600C81DBE9D95E6657C3 /* BabbleiOS.modulemap */,
+				48A5452366158AC25D341A3E1995846E /* BabbleiOS-dummy.m */,
+				E5DF0AA8FC1F8933993CE9C697B9CC08 /* BabbleiOS-Info.plist */,
+				BC1AB0913F82A7AF30E6AB156B864E4D /* BabbleiOS-prefix.pch */,
+				7C7FB62E6419710CED76E374627BAC4D /* BabbleiOS-umbrella.h */,
+				19729305F69BB2FF843C6453EC0ACC41 /* BabbleiOS.debug.xcconfig */,
+				D608FFF1AAD79EC8212B235336E9BE21 /* BabbleiOS.release.xcconfig */,
+				9FC6C74280E823141450602E45C87E94 /* ResourceBundle-SurveySDK-BabbleiOS-Info.plist */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/BabbleiOS";
 			sourceTree = "<group>";
 		};
 		7770C732C5B6590EF80852FD224A46CE /* Pods-babbleios_Tests */ = {
@@ -291,65 +334,62 @@
 			path = "Target Support Files/Pods-babbleios_Tests";
 			sourceTree = "<group>";
 		};
-		85D446ED9956CC23499EFAB3ED09FAB4 /* NumericRating */ = {
+		84A0A7C139742D0760CE40ADA134CB3C /* BabbleiOS */ = {
 			isa = PBXGroup;
 			children = (
-				D3DE4CE33979FF692EDE91786CF36860 /* BabbleNumberButton.swift */,
-				5EEB88DF19C8EDCADC884FC62C2C0BCD /* BabbleNumberCollectionViewCell.swift */,
-				AE5A59BD6F1281E33E48A972DCC32A9C /* BabbleNumericView.swift */,
+				D5D9B58B3816578E95CE801BCFA94E1F /* BabbleAsset.xcassets */,
+				58B8B022F474DD887D03DAAB704FE67B /* BabbleNumberCollectionViewCell.xib */,
+				1DB3FEEBBF022BB21F3961D552EA46B2 /* BabbleNumericView.xib */,
+				52B7E59DF7BF13DEA328837F602A4BBB /* BabbleProjectDetailsController.swift */,
+				4CCDEAD897439517DD90605F3DCBB8FA /* BabbleSdk.swift */,
+				BB2A9BF8332B2992A5E9A8F0A6CA86A9 /* BabbleSingleAndMultiSelectView.xib */,
+				427AD660F0DC8F9324D8A5E15057A774 /* BabbleStarsView.xib */,
+				0930059940E5EE1EE299139721A5D483 /* BabbleSurveyController.swift */,
+				066EF7DCD4D88B28405F2FCBB2369569 /* BabbleTextView.xib */,
+				DF795A78C16F8E093E3E9CED0C398415 /* BabbleViewController.xib */,
+				46C950F0B63AC5168D4BF4BEA0A5C0CB /* BabbleWelcomeView.xib */,
+				639FFE9F18883CEE365D3E2F4326210B /* Models */,
+				1CE8D8C7667D3BADBD6E8C43D8BF8954 /* Pod */,
+				6C9E713A5F65E5B5C60A960FB0670B94 /* Support Files */,
+				08BE59CBD960F7CB9200FD2AEF3848A8 /* Utils */,
+				8F86A4DDF08E55CB25E3FC29D66CBC53 /* ViewControllers */,
 			);
-			name = NumericRating;
-			path = NumericRating;
+			name = BabbleiOS;
+			path = ../..;
 			sourceTree = "<group>";
 		};
-		9AF01EC7A02B6EA028F29F5770BD7F7C /* Support Files */ = {
+		8F86A4DDF08E55CB25E3FC29D66CBC53 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				09D709685365AF213EC964ED5F386060 /* BabbleiOS.modulemap */,
-				4C14E538E76266FE26C674FA83572388 /* BabbleiOS-dummy.m */,
-				39E85EF2DFD3D71E58CADE2B5A495106 /* BabbleiOS-prefix.pch */,
-				B089613D29016ABEC08E576566139817 /* BabbleiOS-umbrella.h */,
-				E84AA9DE0AFAB1397E3A8EFBA4BBF4C5 /* BabbleiOS.debug.xcconfig */,
-				6F1B1DE26230188E18E406DAB8B52387 /* BabbleiOS.release.xcconfig */,
-				722A0FA8943E934E8FB88327A383BCE9 /* ResourceBundle-SurveySDK-BabbleiOS-Info.plist */,
+				063C591C80CC2BBAC4CB4E81BEF4851B /* BabbleViewController.swift */,
+				F189EB3EBD41A2958B0337C5E08FF722 /* BabbleTextView */,
+				98651726C6038D57E9C8A5AD34AA496A /* BabbleWelcomeView */,
+				AA83E50D5789D7EA77DD01886AFFDD26 /* NumericRating */,
+				0FCE37309FD6E2ACBD35B308B49C722D /* SingleAndMultiSelection */,
+				F31CF6EBEDA7B095177C244016E0D7D6 /* StarRating */,
 			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/BabbleiOS";
+			name = ViewControllers;
+			path = BabbleiOS/Classes/ViewControllers;
 			sourceTree = "<group>";
 		};
-		9DB84003443A235FE2A62E9E05D8754A /* BabbleWelcomeView */ = {
+		98651726C6038D57E9C8A5AD34AA496A /* BabbleWelcomeView */ = {
 			isa = PBXGroup;
 			children = (
-				1BD128F658A076B2F11A926A9B8405B0 /* BabbleWelcomeView.swift */,
+				7750BF9AC2ADBDFA1DE0BF3F8E120931 /* BabbleWelcomeView.swift */,
 			);
 			name = BabbleWelcomeView;
 			path = BabbleWelcomeView;
 			sourceTree = "<group>";
 		};
-		A9F1672A4AB5A70B6640F361FE1566F8 /* StarRating */ = {
+		AA83E50D5789D7EA77DD01886AFFDD26 /* NumericRating */ = {
 			isa = PBXGroup;
 			children = (
-				E1F6220781D840AA89E259853B215A4F /* BabbleStarsView.swift */,
+				4F311BC5018317BD24AC81B4480CD61C /* BabbleNumberButton.swift */,
+				06846B7BCD2A158EA342A60C962A0FF3 /* BabbleNumberCollectionViewCell.swift */,
+				044E887990C2737B06B541B159E6DDA4 /* BabbleNumericView.swift */,
 			);
-			name = StarRating;
-			path = StarRating;
-			sourceTree = "<group>";
-		};
-		B6F1403BE458C23981B2533F1CB470F0 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				A255D811DC253A7C71F5283EE9B23E2E /* BabbleBundle.swift */,
-				9703FDCB6298E0FD60EF7F51F8F42270 /* BabbleConstants.swift */,
-				7D5E252E27CA3C7E56CCF0A678F14942 /* BabbleDraggableView.swift */,
-				CE158DF8D66A4112EFD79136D2B4EFE7 /* BabbleLog.swift */,
-				18880CDB18C4794E08C246728960579F /* BabbleRadioButton.swift */,
-				9AAD6AE9060D44D123A98A679E1D08D3 /* BabbleRoundedCornerView.swift */,
-				0734BF50346EE66C07156AC5CA646AB7 /* BabbleSurveyResponseProtocol.swift */,
-				851B04F803177317FB477677493A91E8 /* BabbleViewLoading.swift */,
-				5B904B39DB7EF7E0F4F7B319BE8A6610 /* Networking */,
-			);
-			name = Utils;
-			path = BabbleiOS/Classes/Utils;
+			name = NumericRating;
+			path = NumericRating;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -363,30 +403,6 @@
 			);
 			sourceTree = "<group>";
 		};
-		D0C3373747F7E03372CEC5C228F2FFA3 /* BabbleiOS */ = {
-			isa = PBXGroup;
-			children = (
-				00BDEF48C4E4CB9745DCD0C3733C4695 /* BabbleAsset.xcassets */,
-				5EF3269339638B5B314F0B731A127B3F /* BabbleNumberCollectionViewCell.xib */,
-				D0D81B84B677F5588938BC4F41ACC30A /* BabbleNumericView.xib */,
-				4A9E3360812359C88892D54605162305 /* BabbleProjectDetailsController.swift */,
-				F3397991EC1274824B3F862E9F36A2F8 /* BabbleSdk.swift */,
-				67A58A818CE8F720C96F9C3316EA6BA7 /* BabbleSingleAndMultiSelectView.xib */,
-				476F04647CB592C5DECD781D74011589 /* BabbleStarsView.xib */,
-				033D77510CB574D2B7A963C82400BC6C /* BabbleSurveyController.swift */,
-				B8FF4368DB0C0C2BC3B2858EC6BD4631 /* BabbleTextView.xib */,
-				C4654DBEBEE8CFE0F2F9324D9C46CA83 /* BabbleViewController.xib */,
-				6E52CFF4B45D1E04DFFD283C1E45914B /* BabbleWelcomeView.xib */,
-				E232776F4E13E0AE138DF707D0E5BA94 /* Models */,
-				29BB3A8F51342D89D1758F067071E963 /* Pod */,
-				9AF01EC7A02B6EA028F29F5770BD7F7C /* Support Files */,
-				B6F1403BE458C23981B2533F1CB470F0 /* Utils */,
-				DCD65FC626B624C7B8C9CC9B4237878A /* ViewControllers */,
-			);
-			name = BabbleiOS;
-			path = ../..;
-			sourceTree = "<group>";
-		};
 		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -395,44 +411,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DCD65FC626B624C7B8C9CC9B4237878A /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				9A3204A230400F74705AACEE1ADF3840 /* BabbleViewController.swift */,
-				6202CF8D205DBEE37A83EA81549DBE69 /* BabbleTextView */,
-				9DB84003443A235FE2A62E9E05D8754A /* BabbleWelcomeView */,
-				85D446ED9956CC23499EFAB3ED09FAB4 /* NumericRating */,
-				0B0A2180C0479B2143AA7BE6FA48A714 /* SingleAndMultiSelection */,
-				A9F1672A4AB5A70B6640F361FE1566F8 /* StarRating */,
-			);
-			name = ViewControllers;
-			path = BabbleiOS/Classes/ViewControllers;
-			sourceTree = "<group>";
-		};
 		E06D47E9CD77A1252202A3F56C202BFA /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D0C3373747F7E03372CEC5C228F2FFA3 /* BabbleiOS */,
+				84A0A7C139742D0760CE40ADA134CB3C /* BabbleiOS */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		E232776F4E13E0AE138DF707D0E5BA94 /* Models */ = {
+		F189EB3EBD41A2958B0337C5E08FF722 /* BabbleTextView */ = {
 			isa = PBXGroup;
 			children = (
-				063E0B0512E09DF8699A70E5FC9B7E2D /* AddResponseRequest.swift */,
-				A0AC3D85637E2B567098051CAB9DF6BA /* BackendEventsResponse.swift */,
-				BF5555313019FBC3FF4936D54321D42B /* CohortResponse.swift */,
-				DEB5844E08EF276D70A040657C0307CC /* EligibleSurveyRequest.swift */,
-				7DAECEE7FBAA478DDD6F32DE788C16EB /* EligibleSurveyResponse.swift */,
-				5766477CE3DBC76CBFF725DA9466D370 /* QuestionListResponse.swift */,
-				6A5129F7C8D96B388782EA2CCD32B462 /* StyleListResponse.swift */,
-				DACA087EAAD3517F3515F7C646EE692E /* SurveyInstanceRequest.swift */,
-				AE04F88B040766B83C737DB096828D03 /* SurveyListResponse.swift */,
-				B70BBDF5E62703A3CCE3C2AD64632C08 /* TriggerListResponse.swift */,
+				58ECAB26A5B0A782BD0001EE393C496E /* BabbleTextView.swift */,
 			);
-			name = Models;
-			path = BabbleiOS/Classes/Models;
+			name = BabbleTextView;
+			path = BabbleTextView;
+			sourceTree = "<group>";
+		};
+		F31CF6EBEDA7B095177C244016E0D7D6 /* StarRating */ = {
+			isa = PBXGroup;
+			children = (
+				1C23A9B013A36A97248204AD0BD08C77 /* BabbleStarsView.swift */,
+			);
+			name = StarRating;
+			path = StarRating;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -477,7 +479,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				EF64F607854E4528D12C551415705BC0 /* PBXTargetDependency */,
+				70EF1BB491A01883FACD946A8410846D /* PBXTargetDependency */,
 			);
 			name = "Pods-babbleios_Tests";
 			productName = Pods_babbleios_Tests;
@@ -681,21 +683,52 @@
 			target = 8D65E8B3894EDC146BC52F5620AFA46B /* BabbleiOS */;
 			targetProxy = 5262229E0139313CB9C03F4834DF575D /* PBXContainerItemProxy */;
 		};
+		70EF1BB491A01883FACD946A8410846D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-babbleios_Example";
+			target = CD3752EEB208754745A9155CF287A077 /* Pods-babbleios_Example */;
+			targetProxy = A216BB584FF89ED88D138BEF8FA9990F /* PBXContainerItemProxy */;
+		};
 		E9124CDB2EAAADF8E217D0B928F6BB0C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "BabbleiOS-SurveySDK";
 			target = EEA0BFBD9B7E961DCDC20EE31C22DAF8 /* BabbleiOS-SurveySDK */;
 			targetProxy = F5D9C04D1ACE0669E5DBF1012E50C7BE /* PBXContainerItemProxy */;
 		};
-		EF64F607854E4528D12C551415705BC0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-babbleios_Example";
-			target = CD3752EEB208754745A9155CF287A077 /* Pods-babbleios_Example */;
-			targetProxy = 8236DDF13A6CD3E21DA73AC059FCF69E /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		0A8C5AFFC71DD1FCB9B0FF7BE752030B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19729305F69BB2FF843C6453EC0ACC41 /* BabbleiOS.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/BabbleiOS/BabbleiOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BabbleiOS/BabbleiOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/BabbleiOS/BabbleiOS.modulemap";
+				PRODUCT_MODULE_NAME = BabbleiOS;
+				PRODUCT_NAME = BabbleiOS;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		0ACBB3D9A671A693A418D9925BB75A26 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 066701F14D86702C477C8A63D4258BF3 /* Pods-babbleios_Example.release.xcconfig */;
@@ -732,7 +765,7 @@
 		};
 		39082D61AC0D07758999BF7AC058CF1B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E84AA9DE0AFAB1397E3A8EFBA4BBF4C5 /* BabbleiOS.debug.xcconfig */;
+			baseConfigurationReference = 19729305F69BB2FF843C6453EC0ACC41 /* BabbleiOS.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGNING_ALLOWED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BabbleiOS";
@@ -744,36 +777,6 @@
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		3CA273C07D31953A1241E83F88CF3EEF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E84AA9DE0AFAB1397E3A8EFBA4BBF4C5 /* BabbleiOS.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/BabbleiOS/BabbleiOS-prefix.pch";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/BabbleiOS/BabbleiOS.modulemap";
-				PRODUCT_MODULE_NAME = BabbleiOS;
-				PRODUCT_NAME = BabbleiOS;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
@@ -972,9 +975,9 @@
 			};
 			name = Debug;
 		};
-		E559326615C8E2799FE145CDBAB3DD71 /* Release */ = {
+		E250CD65516C5B3505260A71A38941A7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6F1B1DE26230188E18E406DAB8B52387 /* BabbleiOS.release.xcconfig */;
+			baseConfigurationReference = D608FFF1AAD79EC8212B235336E9BE21 /* BabbleiOS.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -986,6 +989,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_PREFIX_HEADER = "Target Support Files/BabbleiOS/BabbleiOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BabbleiOS/BabbleiOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1038,7 +1042,7 @@
 		};
 		F4B06F8BCD7968F2CF20DFB6CB3A283A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6F1B1DE26230188E18E406DAB8B52387 /* BabbleiOS.release.xcconfig */;
+			baseConfigurationReference = D608FFF1AAD79EC8212B235336E9BE21 /* BabbleiOS.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGNING_ALLOWED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BabbleiOS";
@@ -1077,8 +1081,8 @@
 		A0B166A8222620B001C3D06DFB2C0BDF /* Build configuration list for PBXNativeTarget "BabbleiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3CA273C07D31953A1241E83F88CF3EEF /* Debug */,
-				E559326615C8E2799FE145CDBAB3DD71 /* Release */,
+				0A8C5AFFC71DD1FCB9B0FF7BE752030B /* Debug */,
+				E250CD65516C5B3505260A71A38941A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
