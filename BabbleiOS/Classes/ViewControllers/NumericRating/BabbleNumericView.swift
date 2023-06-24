@@ -16,11 +16,11 @@ import UIKit
 
 @objc(OBJCBabbleNumericView)
 class BabbleNumericView: UIView {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewWidth: NSLayoutConstraint!
     @IBOutlet weak var btnFinish: UIButton!
-
+    
     var minValue = 1
     var maxValue = 5 {
         didSet {
@@ -83,10 +83,13 @@ class BabbleNumericView: UIView {
     
     var selectedButton: UIButton? {
         didSet {
-            self.delegate?.numericRatingSubmit(selectedButton?.tag ?? 0)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(self.isForEmoji ? 500 : 0)) {
+                self.delegate?.numericRatingSubmit(self.selectedButton?.tag ?? 0)
+            }
+            
         }
     }
-
+    
     @objc func onSelectButton(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         self.selectedButton?.isSelected = false
@@ -124,7 +127,7 @@ extension BabbleNumericView: UICollectionViewDelegate, UICollectionViewDataSourc
             cell.btnNumber.isEmoji = true
             if let emojies = self.emojiArray {
                 cell.btnNumber.layer.backgroundColor = UIColor.clear.cgColor
-
+                
                 cell.btnNumber.titleLabel?.font = UIFont.systemFont(ofSize: 30)
                 cell.btnNumber.setTitle(emojies[indexPath.item], for: .normal)
             }
@@ -170,7 +173,6 @@ extension BabbleNumericView: UICollectionViewDelegate, UICollectionViewDataSourc
             }
             else{
                 itemWidth = itemWidth - 10.5
-
             }
             if itemWidth > 55 {
                 itemWidth = 55

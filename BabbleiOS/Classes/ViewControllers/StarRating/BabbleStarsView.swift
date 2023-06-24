@@ -24,7 +24,9 @@ class BabbleStarsView: UIView {
     
     var selectedButton: UIButton? {
         didSet {
-            self.delegate?.numericRatingSubmit(selectedButton?.tag ?? 0)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                self.delegate?.numericRatingSubmit(self.selectedButton?.tag ?? 0)
+            }
         }
     }
     var submitButtonTitle : String = "Submit" {

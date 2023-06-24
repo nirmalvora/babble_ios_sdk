@@ -258,6 +258,8 @@ class BabbleViewController: UIViewController {
             let view = BabbleStarsView.loadFromNib()
             view.delegate = self
             view.isHidden = true
+            view.ratingMinText = question.document?.fields?.minValDescription?.stringValue ?? "Not likely at all"
+            view.ratingMaxText = question.document?.fields?.maxValDescription?.stringValue ?? "Extremely likely"
             view.submitButtonTitle = question.document?.fields?.ctaText?.stringValue ?? "Submit"
             self.stackView.insertArrangedSubview(view, at: indexToAddOn)
             break
@@ -266,6 +268,8 @@ class BabbleViewController: UIViewController {
             view.isForEmoji = true
             view.emojiArray = ["☹️", "🙁", "😐", "🙂", "😊"]
             view.delegate = self
+            view.ratingMinText = question.document?.fields?.minValDescription?.stringValue ?? "Not likely at all"
+            view.ratingMaxText = question.document?.fields?.maxValDescription?.stringValue ?? "Extremely likely"
             view.submitButtonTitle = question.document?.fields?.ctaText?.stringValue ?? "Submit"
             view.isHidden = true
             self.stackView.insertArrangedSubview(view, at: indexToAddOn)
@@ -482,64 +486,11 @@ extension BabbleViewController: BabbleSurveyResponseProtocol {
                 self.selectedAnswers.append(question!)
             }
             if (currentScreenIndex != -1 && checkForNextQuestion != nil && questionListResponse[currentScreenIndex].document?.fields?.nextQuestion != nil && (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!] != nil || questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?["any"] != nil)){
-                if((questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!]?.stringValue ?? "").lowercased() == "in_app_survey")
-                {
+                hasNextQuestion = self.checkSkipLogic(questionElement: questionElement, checkForNextQuestion: checkForNextQuestion)
+                if(!hasNextQuestion){
                     guard let completion = self.completionBlock else { return }
                     self.runCloseAnimation {
                         completion()
-                    }
-                    hasNextQuestion = false
-                    presentReviewRequest()
-                }else if((questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!]?.stringValue ?? "").lowercased() == "babble_whatsapp_referral")
-                {
-                    let indexOfSkipLogic = (questionListResponse[currentScreenIndex].document?.fields?.skipLogicData?.arrayValue?.values ?? []).firstIndex{
-                        $0.mapValue?.fields?.respVal?.stringValue == checkForNextQuestion
-                    }
-                    var referralText = ""
-                    if(indexOfSkipLogic != nil){
-                        referralText = (questionListResponse[currentScreenIndex].document?.fields?.skipLogicData?.arrayValue?.values ?? [])[indexOfSkipLogic!].mapValue?.fields?.referralText?.stringValue ?? ""
-                    }
-                    let urlString = "whatsapp://send?text=\(referralText)"
-                    let urlStringEncoded = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-
-                    if #available(iOS 10.0, *) {
-                        UIApplication.shared.open(NSURL(string: urlStringEncoded!)! as URL)
-                     } else {
-                        UIApplication.shared.openURL(NSURL(string:  urlStringEncoded!)! as URL)
-                     }
-                    guard let completion = self.completionBlock else { return }
-                    self.runCloseAnimation {
-                        completion()
-                    }
-                    hasNextQuestion = false
-
-                }else{
-                    
-                    if((questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!]?.stringValue ?? "").lowercased() == "end" || (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?["any"]?.stringValue ?? "").lowercased() == "end"){
-                        hasNextQuestion = false
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-                            guard let completion = self.completionBlock else { return }
-                            self.runCloseAnimation {
-                                completion()
-                            }
-                        }
-                    }else{
-                        let index = questionListResponse[currentScreenIndex...(questionListResponse.count-1)].firstIndex{
-                            if((questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!]?.stringValue ?? "") != ""){
-                                return (($0.document?.name ?? "") as NSString).lastPathComponent == (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!]?.stringValue ?? "")
-                            }else if(questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?["any"] != nil){
-                                return  (($0.document?.name ?? "") as NSString).lastPathComponent == (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?["any"]?.stringValue ?? "")
-                            }else{
-                                return false
-                            }
-                        }
-                        if(index != nil){
-                            currentScreenIndex = index!
-                        }else{
-                            currentScreenIndex = currentScreenIndex+1
-                        }
-                        self.setupUIAccordingToConfiguration()
-                        self.progressBar.setProgress(Float(CGFloat(self.currentScreenIndex + 1 )/CGFloat(questionListResponse.count)), animated: true)
                     }
                 }
             } else {
@@ -548,7 +499,7 @@ extension BabbleViewController: BabbleSurveyResponseProtocol {
                 self.progressBar.setProgress(Float(CGFloat(self.currentScreenIndex + 1 )/CGFloat(questionListResponse.count)), animated: true)
             }
         } else {
-            hasNextQuestion = false
+            hasNextQuestion = self.checkSkipLogic(questionElement: questionElement, checkForNextQuestion: checkForNextQuestion,isLastQuestion: true)
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
                 guard let completion = self.completionBlock else { return }
                 self.runCloseAnimation {
@@ -559,6 +510,58 @@ extension BabbleViewController: BabbleSurveyResponseProtocol {
         if(questionElement != nil)
         {
             self.addResponse(answer: answer ?? "", questionElement: questionElement!, hasNextQuestion: hasNextQuestion)
+        }
+    }
+    
+    private func checkSkipLogic( questionElement: QuestionListResponseElement?,checkForNextQuestion: String?, isLastQuestion: Bool = false) -> Bool {
+        if((questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!]?.stringValue ?? "").lowercased() == "in_app_survey")
+        {
+            presentReviewRequest()
+            return false
+        }else if((questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!]?.stringValue ?? "").lowercased() == "babble_whatsapp_referral")
+        {
+            let indexOfSkipLogic = (questionListResponse[currentScreenIndex].document?.fields?.skipLogicData?.arrayValue?.values ?? []).firstIndex{
+                $0.mapValue?.fields?.respVal?.stringValue == checkForNextQuestion
+            }
+            var referralText = ""
+            if(indexOfSkipLogic != nil){
+                referralText = (questionListResponse[currentScreenIndex].document?.fields?.skipLogicData?.arrayValue?.values ?? [])[indexOfSkipLogic!].mapValue?.fields?.referralText?.stringValue ?? ""
+            }
+            let urlString = "whatsapp://send?text=\(referralText)"
+            let urlStringEncoded = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(NSURL(string: urlStringEncoded!)! as URL)
+            } else {
+                UIApplication.shared.openURL(NSURL(string:  urlStringEncoded!)! as URL)
+            }
+            return false
+        }else{
+            if (isLastQuestion) {
+                return false
+            }else{
+                if((questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!]?.stringValue ?? "").lowercased() == "end" || (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?["any"]?.stringValue ?? "").lowercased() == "end"){
+                    return false
+                }else{
+                    let index = questionListResponse[currentScreenIndex...(questionListResponse.count-1)].firstIndex{
+                        if((questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!]?.stringValue ?? "") != ""){
+                            return (($0.document?.name ?? "") as NSString).lastPathComponent == (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!]?.stringValue ?? "")
+                        }else if(questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?["any"] != nil){
+                            return  (($0.document?.name ?? "") as NSString).lastPathComponent == (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?["any"]?.stringValue ?? "")
+                        }else{
+                            return false
+                        }
+                    }
+                    if(index != nil){
+                        currentScreenIndex = index!
+                    }else{
+                        currentScreenIndex = currentScreenIndex+1
+                    }
+                    self.setupUIAccordingToConfiguration()
+                    self.progressBar.setProgress(Float(CGFloat(self.currentScreenIndex + 1 )/CGFloat(questionListResponse.count)), animated: true)
+                    return true
+                }
+            }
         }
     }
     
