@@ -13,7 +13,6 @@ protocol URLRequestManagerProtocol {
 }
 
 class URLRequestManager: URLRequestManagerProtocol {
-    let BaseURL: String = "https://babble-app-backend.herokuapp.com/"
     func getAPIWith(_ endPoint: String, header: [String: String], completion: @escaping APICompletionBlock) {
         var request = URLRequest(url: URL(string: "\(baseURL)\(endPoint)")!)
         request.httpMethod = "GET"
