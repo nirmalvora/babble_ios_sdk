@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        BabbleSdk.setCustomerId("cust007",userDetails: ["firstname":"Nirmal"])
+        BabbleSdk.setCustomerId("fintech4",userDetails: ["firstname":"Nirmal"])
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func openSurveyClick(_ sender: UIButton) {
-        BabbleSdk.trigger("quizz",properties: ["firstname":"Nirmal"])
+        BabbleSdk.trigger("fintech4",properties: ["firstname":"Nirmal"])
     }
     
     @IBAction func closeSurvey(_ sender: UIButton) {

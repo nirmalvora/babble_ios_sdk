@@ -43,6 +43,7 @@ class URLRequestManager: URLRequestManagerProtocol {
        
         var request = URLRequest(url: URL(string: "\(baseURL)\(endPoint)")!)
         request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField:"Content-Type")
         request.httpBody = parameters
         header.forEach { (key: String, value: String) in
             request.addValue(value, forHTTPHeaderField: key)

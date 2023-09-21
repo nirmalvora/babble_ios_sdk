@@ -178,7 +178,7 @@ class BabbleSurveyController: NSObject {
                 let triggerId = ((trigger.document?.name ?? "") as NSString).lastPathComponent
                 
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
                 let sortedSurvey = self.projectDetailsController.surveyResponseList?.sorted(by: { dateFormatter.date(from:($0.document?.fields?.createdAt?.stringValue ?? ""))!.compare(dateFormatter.date(from:($1.document?.fields?.createdAt?.stringValue ?? ""))!) == .orderedDescending })
                 
                 if let surveyList = sortedSurvey?.filter({($0.document?.fields?.triggerID?.stringValue ?? "") == triggerId})
@@ -228,8 +228,8 @@ class BabbleSurveyController: NSObject {
                                     let triggerDelay = Int(survey.document?.fields?.triggerDelay?.integerValue ?? "0") ?? 0
                                     timerTask = DispatchWorkItem {
                                         let sortedQuestionList = questionList?.sorted(by: {
-                                            let value1 = Int($0.document?.fields?.sequenceNo?.integerValue ?? "0")!
-                                            let value2 = Int($1.document?.fields?.sequenceNo?.integerValue ?? "0")!
+                                            let value1 = $0.document?.fields?.sequenceNo?.integerValue ?? 0
+                                            let value2 = $1.document?.fields?.sequenceNo?.integerValue ?? 0
                                             return value1 < value2
                                             
                                         })
@@ -277,7 +277,7 @@ class BabbleSurveyController: NSObject {
     
     func createSurveyInstance(surveyId: String, eventIds: [BackendEventResponseElement]?, surveyInstanceId: String,properties: [String: Any]? = nil){
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         var surveyInstanceRequest = [String: Any]()
         surveyInstanceRequest["properties"] = properties
         surveyInstanceRequest["survey_id"] = surveyId

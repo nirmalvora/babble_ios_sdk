@@ -23,8 +23,8 @@ struct QuestionFields: Codable {
     let isDefault: BooleanValue?
     let answers: Answers?
     let surveyID, questionDesc, ctaText, id, maxValDescription, minValDescription,correctAnswer,userID,questionText: StringValue?
-    let sequenceNo: IntegerValue?
-    let questionTypeID: IntegerValue?
+    let sequenceNo: IntValue?
+    let questionTypeID: IntValue?
     let inactive: BooleanValue?
     let nextQuestion: NextQuestion?
     let skipLogicData: SkipLogicData?
@@ -79,6 +79,10 @@ struct BooleanValue: Codable {
 // MARK: - QuestionTypeID
 struct IntegerValue: Codable {
     let integerValue: String?
+}
+// MARK: - QuestionTypeID
+struct IntValue: Codable {
+    let integerValue: Int?
 }
 
 // MARK: - SkipLogicData

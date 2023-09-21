@@ -26,7 +26,7 @@ var kPlaceholderColor = kPrimaryTitleColor.withAlphaComponent(0.3)
 
 let kBorderColor = UIColor(red: 0.76, green: 0.76, blue: 0.76, alpha: 1.0)
 let kAppGreyBGColor = UIColor.colorFromHex("F3F3F3")
-let baseURL = "https://babble-app-api-e56ea46dbbcb.herokuapp.com/"
+let baseURL = "http://157.245.106.27:8091/api/"
 
 extension UIColor {
     

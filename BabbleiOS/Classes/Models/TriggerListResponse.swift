@@ -30,14 +30,13 @@ struct DocumentTrigger: Codable {
 struct TriggerFields: Codable {
     let userID, lastUpdatedAt, createdAt, description: StringValue?
     let name: StringValue?
-    let platform: Platform?
     let status: StringValue?
 
     enum CodingKeys: String, CodingKey {
         case userID = "user_id"
         case lastUpdatedAt = "last_updated_at"
         case createdAt = "created_at"
-        case description, name, platform, status
+        case description, name, status
     }
 }
 

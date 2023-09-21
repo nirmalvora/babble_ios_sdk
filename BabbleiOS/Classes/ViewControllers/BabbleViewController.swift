@@ -86,11 +86,11 @@ class BabbleViewController: UIViewController {
             totalQuizQuestion = 0
             selectedAnswers = []
             questionListResponse.forEach {
-                if (($0.document?.fields?.questionTypeID?.integerValue ?? "0") == "2") {
+                if (($0.document?.fields?.questionTypeID?.integerValue ?? 0) == 2) {
                     totalQuizQuestion = totalQuizQuestion! + 1
                 }
             }
-            if(questionListResponse.last?.document?.fields?.questionTypeID?.integerValue != "9"){
+            if(questionListResponse.last?.document?.fields?.questionTypeID?.integerValue != 9){
                 do {
                     let thankYouCard = try JSONDecoder().decode(QuestionListResponseElement.self, from: Data("""
                     {
@@ -197,7 +197,7 @@ class BabbleViewController: UIViewController {
             subView.removeFromSuperview()
         }
         
-        switch (question.document?.fields?.questionTypeID?.integerValue ?? "")  {
+        switch (String(question.document?.fields?.questionTypeID?.integerValue ?? -1))  {
         case "1":
             let view = BabbleSingleAndMultiSelectView.loadFromNib()
             view.delegate = self
@@ -577,14 +577,14 @@ extension BabbleViewController: BabbleSurveyResponseProtocol {
     
     func addResponse(answer: String,questionElement: QuestionListResponseElement, hasNextQuestion: Bool){
         let tempQuestionList =
-        questionListResponse.filter { $0.document?.fields?.questionTypeID?.integerValue != "6" &&  $0.document?.fields?.questionTypeID?.integerValue != "9" }
+        questionListResponse.filter { $0.document?.fields?.questionTypeID?.integerValue != 6 &&  $0.document?.fields?.questionTypeID?.integerValue != 9 }
         let surveyId = questionElement.document?.fields?.surveyID?.stringValue ?? ""
-        let nextQuestionTracker = ( questionListResponse[currentScreenIndex].document?.fields?.questionTypeID?.integerValue ?? "") != "9"  && hasNextQuestion
-        let questionTypeId = questionElement.document?.fields?.questionTypeID?.integerValue ?? "-1"
-        let sequenceNo = questionElement.document?.fields?.sequenceNo?.integerValue ?? "-1"
+        let nextQuestionTracker = ( questionListResponse[currentScreenIndex].document?.fields?.questionTypeID?.integerValue ?? -1) != 9  && hasNextQuestion
+        let questionTypeId = questionElement.document?.fields?.questionTypeID?.integerValue ?? -1
+        let sequenceNo = questionElement.document?.fields?.sequenceNo?.integerValue ?? -1
         let questionText = questionElement.document?.fields?.questionText?.stringValue ?? ""
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         let date = dateFormatter.string(from: Date())
         let addRequest = AddResponseRequest(surveyId: surveyId, surveyInstanceId: surveyInstanceId, questionText: questionText, responseCreateAt: date, responseUpdateAt: date, response: answer, questionTypeId: Int(questionTypeId), sequenceNo: Int(sequenceNo), shouldMarkComplete: tempQuestionList.last?.document?.name == questionElement.document?.name, shouldMarkPartial: tempQuestionList.last?.document?.name != questionElement.document?.name,nextQuestionTracker: nextQuestionTracker)
         apiController.addResponse(addRequest, { isSuccess, error, data in
