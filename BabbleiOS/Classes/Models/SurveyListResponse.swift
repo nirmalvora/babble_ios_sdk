@@ -59,6 +59,18 @@ struct Fields: Codable {
 // MARK: - CreatedAt
 struct StringValue: Codable {
     let stringValue: String?
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        if let intValue = try? container.decode(Int.self, forKey: .stringValue) {
+           stringValue = String(intValue)
+       } else if let stringValue = try? container.decode(String.self, forKey: .stringValue) {
+           self.stringValue = stringValue
+       } else if container.contains(.stringValue) {
+           stringValue = nil
+       } else {
+           throw DecodingError.keyNotFound(CodingKeys.stringValue, DecodingError.Context(codingPath: container.codingPath, debugDescription: "Key not found"))
+       }
+    }
 }
 
 typealias SurveyResponse = [SurveyResponseElement]

@@ -456,7 +456,7 @@ class BabbleViewController: UIViewController {
 
 extension BabbleViewController: BabbleSurveyResponseProtocol {
     func textSurveySubmit(_ text: String?) {
-        self.presentNextScreen(checkForNextQuestion: "", answer: text, questionElement: questionListResponse[currentScreenIndex])
+        self.presentNextScreen(checkForNextQuestion: text!, answer: text, questionElement: questionListResponse[currentScreenIndex])
     }
     
     func numericRatingSubmit(_ text: Int?) {
@@ -514,11 +514,11 @@ extension BabbleViewController: BabbleSurveyResponseProtocol {
     }
     
     private func checkSkipLogic( questionElement: QuestionListResponseElement?,checkForNextQuestion: String?, isLastQuestion: Bool = false) -> Bool {
-        if((questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!]?.stringValue ?? "").lowercased() == "in_app_survey")
+        if((questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?["any"]?.stringValue ?? "").lowercased() == "in_app_survey"||(questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!]?.stringValue ?? "").lowercased() == "in_app_survey")
         {
             presentReviewRequest()
             return false
-        }else if((questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!]?.stringValue ?? "").lowercased() == "babble_whatsapp_referral")
+        }else if((questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?["any"]?.stringValue ?? "").lowercased() == "babble_whatsapp_referral"||(questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!]?.stringValue ?? "").lowercased() == "babble_whatsapp_referral")
         {
             let indexOfSkipLogic = (questionListResponse[currentScreenIndex].document?.fields?.skipLogicData?.arrayValue?.values ?? []).firstIndex{
                 $0.mapValue?.fields?.respVal?.stringValue == checkForNextQuestion
