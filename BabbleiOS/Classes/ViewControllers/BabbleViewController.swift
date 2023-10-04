@@ -488,9 +488,11 @@ extension BabbleViewController: BabbleSurveyResponseProtocol {
             if (currentScreenIndex != -1 && checkForNextQuestion != nil && questionListResponse[currentScreenIndex].document?.fields?.nextQuestion != nil && (questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!] != nil || questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?["any"] != nil)){
                 hasNextQuestion = self.checkSkipLogic(questionElement: questionElement, checkForNextQuestion: checkForNextQuestion)
                 if(!hasNextQuestion){
-                    guard let completion = self.completionBlock else { return }
-                    self.runCloseAnimation {
-                        completion()
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+                        guard let completion = self.completionBlock else { return }
+                        self.runCloseAnimation {
+                            completion()
+                        }
                     }
                 }
             } else {
@@ -520,8 +522,14 @@ extension BabbleViewController: BabbleSurveyResponseProtocol {
             return false
         }else if((questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?["any"]?.stringValue ?? "").lowercased() == "babble_whatsapp_referral"||(questionListResponse[currentScreenIndex].document?.fields?.nextQuestion?.mapValue?.fields?[checkForNextQuestion!]?.stringValue ?? "").lowercased() == "babble_whatsapp_referral")
         {
-            let indexOfSkipLogic = (questionListResponse[currentScreenIndex].document?.fields?.skipLogicData?.arrayValue?.values ?? []).firstIndex{
+            var indexOfSkipLogic = (questionListResponse[currentScreenIndex].document?.fields?.skipLogicData?.arrayValue?.values ?? []).firstIndex{
                 $0.mapValue?.fields?.respVal?.stringValue == checkForNextQuestion
+            }
+            if(indexOfSkipLogic == nil){
+                indexOfSkipLogic = (questionListResponse[currentScreenIndex].document?.fields?.skipLogicData?.arrayValue?.values ?? []).firstIndex{
+                    $0.mapValue?.fields?.respVal?.stringValue == "Any"
+                    || $0.mapValue?.fields?.respVal?.stringValue == "any"
+                }
             }
             var referralText = ""
             if(indexOfSkipLogic != nil){
