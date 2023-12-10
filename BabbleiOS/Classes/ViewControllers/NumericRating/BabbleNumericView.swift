@@ -73,8 +73,8 @@ class BabbleNumericView: UIView {
         collectionView.backgroundColor = UIColor.clear
         collectionView.delegate = self
         collectionView.dataSource = self
-        self.lblMaxValue.textColor = kFooterColor
-        self.lblMinValue.textColor = kFooterColor
+        self.lblMaxValue.textColor = textColorLight
+        self.lblMinValue.textColor = textColorLight
         btnFinish.layer.cornerRadius = 5.0
         btnFinish.isHidden = true
         btnFinish.backgroundColor = kSubmitButtonColorDisable

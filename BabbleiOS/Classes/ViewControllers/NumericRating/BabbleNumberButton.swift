@@ -23,13 +23,13 @@ class BabbleNumberButton: UIButton {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setTitleColor(UIColor.white, for: .selected)
-        self.setTitleColor(kPrimaryTitleColor, for: .normal)
+        self.setTitleColor(textColor, for: .normal)
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setTitleColor(UIColor.white, for: .selected)
-        self.setTitleColor(kPrimaryTitleColor, for: .normal)
+        self.setTitleColor(textColor, for: .normal)
     }
     
     required init?(coder: NSCoder) {
@@ -39,7 +39,7 @@ class BabbleNumberButton: UIButton {
     override var isHighlighted: Bool {
         didSet {
             if self.isSelected == false {
-                self.layer.backgroundColor = isHighlighted ? kBrandHightlightColor.cgColor : kOptionBackgroundColor.cgColor
+                self.layer.backgroundColor = kOptionBackgroundColor.cgColor
             }
         }
     }

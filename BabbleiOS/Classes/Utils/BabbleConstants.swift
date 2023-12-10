@@ -8,30 +8,24 @@
 import Foundation
 import UIKit
 
-var kBrandColor = UIColor(red: 0.36, green: 0.37, blue: 0.93, alpha: 1.0)
-var greenColor = UIColor.colorFromHex("3eaa1c")
-var redColor = UIColor.colorFromHex("FF0000")
-var kBrandHightlightColor = kBrandColor.withAlphaComponent(0.21)
-var kPrimaryTitleColor = UIColor.black
-var kSecondaryTitleColor = kPrimaryTitleColor.withAlphaComponent(0.8)
-var kFooterColor = UIColor.colorFromHex("787878")
-var kOptionBackgroundColor = UIColor.colorFromHex("F3F3F3")
-var kOptionBackgroundColorHightlighted = UIColor.white
-var kWatermarkColor = kPrimaryTitleColor.withAlphaComponent(0.6)
-var kWatermarkColorHightlighted = kPrimaryTitleColor.withAlphaComponent(0.05)
-var kCloseButtonColor = kPrimaryTitleColor.withAlphaComponent(0.6)
-var kBackgroundColor = UIColor.white
+var kBrandColor = UIColor.colorFromHex("#5D5FEF")
+var greenColor = UIColor.colorFromHex("#3eaa1c")
+var redColor = UIColor.colorFromHex("#FF0000")
+var textColor = UIColor.colorFromHex("#000000")
+var textColorLight = UIColor.colorFromHex("#000000")
+var kOptionBackgroundColor = UIColor.colorFromHex("#F3F3F3")
+var whiteColor = UIColor.white
+var kBackgroundColor = UIColor.colorFromHex("#5D5FEF")
 var kSubmitButtonColorDisable = kBrandColor.withAlphaComponent(0.5)
-var kPlaceholderColor = kPrimaryTitleColor.withAlphaComponent(0.3)
 
 let kBorderColor = UIColor(red: 0.76, green: 0.76, blue: 0.76, alpha: 1.0)
-let kAppGreyBGColor = UIColor.colorFromHex("F3F3F3")
+let kAppGreyBGColor = UIColor.colorFromHex("#F3F3F3")
 let baseURL = "https://v2.usebabble.com/api/"
 
 extension UIColor {
     
     class func colorFromHex(_ hex: String) -> UIColor {
-        if hex.count == 8 {
+        if hex.count > 7 {
             let color = UIColor(hexaRGBA: hex)
             return color ?? kBrandColor
         } else {

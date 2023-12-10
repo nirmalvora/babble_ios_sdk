@@ -62,8 +62,8 @@ class BabbleStarsView: UIView {
         self.setupImages()
         btnFinish.layer.cornerRadius = 5.0
         btnFinish.isHidden = true
-        self.lblMaxValue.textColor = kFooterColor
-        self.lblMinValue.textColor = kFooterColor
+        self.lblMaxValue.textColor = textColorLight
+        self.lblMinValue.textColor = textColorLight
         btnFinish.backgroundColor = kSubmitButtonColorDisable
         btnFinish.isUserInteractionEnabled = false
     }

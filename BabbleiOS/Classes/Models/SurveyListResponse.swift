@@ -28,6 +28,21 @@ struct Document: Codable {
     let name: String?
     let fields: Fields?
     let createTime, updateTime: String?
+    let styles: Styles
+
+}
+
+struct Styles: Codable {
+    let brandColor, backgroundColor, textColor, textColorLight: String
+    let optionBgColor: String
+
+    enum CodingKeys: String, CodingKey {
+        case brandColor = "brand_color"
+        case backgroundColor = "background_color"
+        case textColor = "text_color"
+        case textColorLight = "text_color_light"
+        case optionBgColor = "option_bg_color"
+    }
 }
 
 // MARK: - Fields

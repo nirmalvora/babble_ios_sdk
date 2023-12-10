@@ -58,16 +58,17 @@ class BabbleTextView: UIView {
         textView.layer.borderWidth = 0.5
         textView.layer.cornerRadius = 2.0
         textView.backgroundColor = UIColor.clear
-        textView.textColor = kPrimaryTitleColor
+        textView.textColor = textColor
         placeholderLabel = UILabel()
         placeholderLabel.text = placeHolderText
         placeholderLabel.font = textView.font
         placeholderLabel.sizeToFit()
         textView.addSubview(placeholderLabel)
         placeholderLabel.frame.origin = CGPoint(x: 5, y: (textView.font?.pointSize ?? 16) / 2)
-        placeholderLabel.textColor = kPlaceholderColor
+        placeholderLabel.textColor = textColor.withAlphaComponent(0.5)
         placeholderLabel.isHidden = !textView.text.isEmpty
         btnFinish.layer.cornerRadius = 5.0
+        textView.tintColor = textColor
         btnFinish.isHidden = false
         btnFinish.backgroundColor = kBrandColor
         btnFinish.isUserInteractionEnabled = true

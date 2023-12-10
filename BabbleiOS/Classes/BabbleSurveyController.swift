@@ -70,32 +70,6 @@ class BabbleSurveyController: NSObject {
                 dispatchGroup.leave()   // <<----
             }
         })
-        dispatchGroup.enter()
-        self.apiController.getStyle({ isSuccess, error, data in
-            if isSuccess == true, let data = data {
-                do {
-                    self.projectDetailsController.styleListResponse = try JSONDecoder().decode(StyleListResponse.self, from: data)
-                    
-                    if((self.projectDetailsController.styleListResponse ?? []).count != 0)
-                    {
-                        if let colorHex = self.projectDetailsController.styleListResponse?[0].document?.fields?.mainColor?.stringValue {
-                            let themeColor = UIColor.colorFromHex(colorHex)
-                            kBrandColor = themeColor
-                        }
-                    }
-                }
-                catch {
-                    initApiFailed=true
-                    BabbleLog.writeLog("getStyle parsing failed - Failed")
-                }
-            } else {
-                initApiFailed=true
-                BabbleLog.writeLog("getStyle - Failed")
-            }
-            DispatchQueue.main.async {
-                dispatchGroup.leave()   // <<----
-            }
-        })
         dispatchGroup.notify(queue: .main) {
             if(!initApiFailed)
             {
@@ -235,6 +209,11 @@ class BabbleSurveyController: NSObject {
                                         })
                                         let surveyInstanceId = self.randomString(length: 10)
                                         self.createSurveyInstance(surveyId: surveyId, eventIds: eventList, surveyInstanceId: surveyInstanceId,properties: properties)
+                                        kBrandColor = UIColor.colorFromHex(survey.document?.styles.brandColor ?? "#5D5FFE")
+                                        textColor = UIColor.colorFromHex(survey.document?.styles.textColor ?? "#000000")
+                                        textColorLight = UIColor.colorFromHex(survey.document?.styles.textColorLight ?? "#000000")
+                                        kOptionBackgroundColor = UIColor.colorFromHex(survey.document?.styles.optionBgColor ?? "#000000")
+                                        kBackgroundColor = UIColor.colorFromHex(survey.document?.styles.backgroundColor ?? "#5D5FEF")
                                         self.openSurvey(sortedQuestionList!, surveyInstanceId,survey)
                                     }
                                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(triggerDelay), execute: timerTask!)

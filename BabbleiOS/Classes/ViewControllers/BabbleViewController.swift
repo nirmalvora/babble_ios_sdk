@@ -73,7 +73,6 @@ class BabbleViewController: UIViewController {
         //
         self.containerView.alpha = 0.0
         self.ratingView.alpha = 0.0
-        
         self.ratingView.layer.shadowColor = UIColor.black.cgColor
         self.ratingView.layer.shadowOpacity = 0.25
         self.ratingView.layer.shadowOffset = CGSize.zero
@@ -183,6 +182,7 @@ class BabbleViewController: UIViewController {
         } else {
             self.viewPrimaryTitle1.isHidden = true
         }
+        self.lblPrimaryTitle1.textColor = textColor
         
         if let value = question.document?.fields?.questionDesc?.stringValue {
             self.viewSecondaryTitle.isHidden = false
@@ -190,6 +190,7 @@ class BabbleViewController: UIViewController {
         } else {
             self.viewSecondaryTitle.isHidden = true
         }
+        self.lblSecondaryTitle.textColor = textColor
         
         let indexToAddOn = 3
         if self.stackView.arrangedSubviews.count > indexToAddOn {
@@ -298,6 +299,7 @@ class BabbleViewController: UIViewController {
                 }
                 self.viewQuizResult.isHidden = false
                 self.lblQuizResult.text = resultText
+                self.lblQuizResult.textColor = textColor
             }
             let delay = (survey?.document?.fields?.isQuiz?.booleanValue ?? false) == true ? 3 : 1
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(delay)) {

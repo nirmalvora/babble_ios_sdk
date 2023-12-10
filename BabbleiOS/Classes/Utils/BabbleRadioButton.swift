@@ -61,29 +61,30 @@ class BabbleRadioButton: UIButton {
         if self.radioButtonType == .radioButton {
             
             if self.isHighlighted == true {
-                
+                self.layer.backgroundColor = kOptionBackgroundColor.cgColor
+                self.setTitleColor(textColor, for: .normal)
             } else if self.isSelected == true {
                 if(!isQuizQuestion){
                     self.layer.backgroundColor = kBrandColor.cgColor
-                    self.setTitleColor(UIColor.white, for: .normal)
+                    self.setTitleColor(whiteColor, for: .normal)
                 }
             } else {
                 self.layer.backgroundColor = kOptionBackgroundColor.cgColor
-                self.setTitleColor(kPrimaryTitleColor, for: .normal)
+                self.setTitleColor(textColor, for: .normal)
             }
         }
         else {
             if self.isHighlighted == true {
-                self.layer.backgroundColor = kOptionBackgroundColorHightlighted.cgColor
-                self.setTitleColor(kPrimaryTitleColor, for: .normal)
+                self.layer.backgroundColor = kOptionBackgroundColor.cgColor
+                self.setTitleColor(textColor, for: .normal)
                 
             } else if self.isSelected == true {
                 self.layer.backgroundColor = kBrandColor.cgColor
-                self.setTitleColor(kOptionBackgroundColorHightlighted, for: .normal)
+                self.setTitleColor(whiteColor, for: .normal)
                 
             } else {
                 self.layer.backgroundColor = kOptionBackgroundColor.cgColor
-                self.setTitleColor(kPrimaryTitleColor, for: .normal)
+                self.setTitleColor(textColor, for: .normal)
             }
         }
     }

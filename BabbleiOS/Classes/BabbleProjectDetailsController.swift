@@ -22,7 +22,6 @@ protocol ProjectDetailsManageable {
     var surveyResponseList: [SurveyResponseElement]? {get set}
     var triggerListResponse: [TriggerListResponseElement]? {get set}
     var questionListResponse: [QuestionListResponseElement]? {get set}
-    var styleListResponse: [StyleListResponseElement]? {get set}
     var backendEventResoinse: [BackendEventResponseElement]? {get set}
     var cohortResonse: [CohortResonseElement]? {get set}
     var eligibleSurveyResponse: EligibleSurveyResponse? {get set}
@@ -63,8 +62,6 @@ final class BabbleProjectDetailsController: NSObject, ProjectDetailsManageable {
     var triggerListResponse: [TriggerListResponseElement]?
     
     var questionListResponse: [QuestionListResponseElement]?
-    
-    var styleListResponse: [StyleListResponseElement]?
     
     var backendEventResoinse: [BackendEventResponseElement]?
     

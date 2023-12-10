@@ -24,9 +24,14 @@ public final class BabbleSdk: NSObject {
     }
     
 
-
+    @objc public class func generateCustomerId() -> String {
+        let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let randomString = String((0..<10).map { _ in chars.randomElement()! })
+        return "Anon" + randomString
+    }
+    
     @objc public class func setCustomerId(_ customerId: String?,userDetails: [String: Any]? = nil) {
-        shared.projectDetailsController.customerId = customerId
+        shared.projectDetailsController.customerId = customerId != nil && customerId != "" ? customerId : generateCustomerId()
         shared.babbleSurveyController.getCustomerData(userDetails: userDetails)
         
     }

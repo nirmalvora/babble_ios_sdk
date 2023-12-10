@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -73,7 +73,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="Ge5-Hu-662" secondAttribute="bottom" constant="5" id="11n-Zd-52x"/>
                                                         <constraint firstItem="Ge5-Hu-662" firstAttribute="top" secondItem="KTe-XC-3z5" secondAttribute="top" constant="5" id="9xg-iW-zEc"/>
@@ -91,7 +91,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fvM-Lk-wSC" secondAttribute="trailing" id="W73-EN-SrN"/>
                                                         <constraint firstItem="fvM-Lk-wSC" firstAttribute="top" secondItem="Dns-v7-mMZ" secondAttribute="top" constant="5" id="Za7-f5-BTx"/>
@@ -108,7 +108,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="BR3-MF-gcl" firstAttribute="top" secondItem="Dkp-bX-gIH" secondAttribute="top" id="KLJ-1O-wPY"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BR3-MF-gcl" secondAttribute="trailing" id="NP2-Q1-e5P"/>
@@ -117,6 +117,7 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </stackView>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>

@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -65,6 +64,7 @@
                                     </connections>
                                 </button>
                             </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="VAg-dJ-FQl" firstAttribute="width" secondItem="rUb-4Z-Nnu" secondAttribute="width" id="G0L-Pe-PHL"/>
                                 <constraint firstItem="Mqx-o1-Mp2" firstAttribute="width" secondItem="rUb-4Z-Nnu" secondAttribute="width" id="PZO-Li-CZw"/>
@@ -93,6 +93,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="17" id="2Mj-7r-Ipd"/>
                                 <constraint firstItem="zOD-xg-n7h" firstAttribute="leading" secondItem="lRP-ek-RHn" secondAttribute="leading" id="AeK-2A-OfK"/>
@@ -112,6 +113,7 @@
                             </connections>
                         </button>
                     </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="lRP-ek-RHn" firstAttribute="trailing" secondItem="2KT-2a-WFg" secondAttribute="trailing" id="KeZ-8Y-DFF"/>
                         <constraint firstAttribute="trailing" secondItem="uFr-VH-eSM" secondAttribute="trailing" id="Lct-ct-vYq"/>
@@ -120,7 +122,7 @@
                     </constraints>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="5k4-6S-d3f" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="F4L-GJ-upF"/>
                 <constraint firstAttribute="trailing" secondItem="5k4-6S-d3f" secondAttribute="trailing" id="QTf-jk-XbW"/>
@@ -137,9 +139,4 @@
             <point key="canvasLocation" x="278.26086956521743" y="-99.107142857142847"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>
